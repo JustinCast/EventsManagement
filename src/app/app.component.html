@@ -1,12 +1,13 @@
 
 <nav class="shadow navbar navbar-light bg-blue mb-5">
   <a class="navbar-brand pull-left text-center" href="/">
-    <img id="logo" src="http://adearis.com/wp-content/uploads/2017/12/logoadearisretina.png" alt="Adearis">
+    Adearis
   </a>
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home</a>
-      <a class="nav-item nav-link" href="#">Item</a>
+      <a [routerLink]="['/home']" routerLinkActive="active-link" class="nav-item nav-link active" href="#">Inicio</a>
+      <a class="nav-item nav-link" href="#">Eventos</a>
+      <a class="nav-item nav-link" href="#">Contacto</a>
     </div>
   </div>
   <div class="navbar-expand ml-auto navbar-nav">
@@ -20,3 +21,4 @@
     </div>
   </div>
 </nav>
+<router-outlet style="margin-top: 0"></router-outlet>
