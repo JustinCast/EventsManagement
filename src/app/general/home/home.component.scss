@@ -1,0 +1,37 @@
+#header-container {
+    width: 100%;
+    margin-top: 0;
+    background-color: rgba(102, 61, 142, 0.2);
+    padding: 1% 0 1% 0
+}
+#footer-container {
+    margin-top: 2%;
+    width: 100%;
+}
+.example-card {
+    max-width: 400px;
+}
+.footer-i {
+    font-size: 50px
+}
+hr {
+    display: block;
+    height: 0.5px;
+    border: 0;
+    border-top: 0.1px solid silver;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+#footer-ul {
+    list-style-type: none;
+    width: 100%;
+    padding: 0
+}
+.footer-li {
+    display: inline-block;
+    margin: 1% 1% 1% 1%
+}
+#footer-header {
+    color: indigo
+}
