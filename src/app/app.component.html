@@ -1,24 +1,26 @@
-
-<nav class="shadow navbar navbar-light bg-blue mb-5">
-  <a class="navbar-brand pull-left text-center" href="/">
-    Adearis
-  </a>
-  <div class="navbar-expand mr-auto">
-    <div class="navbar-nav">
-      <a [routerLink]="['/home']" routerLinkActive="active-link" class="nav-item nav-link active" href="#">Inicio</a>
-      <a class="nav-item nav-link" href="#">Eventos</a>
-      <a class="nav-item nav-link" href="#">Contacto</a>
+<div class="bg-image"></div>
+<div class="bg-text">
+  <nav id="main-nav" class="shadow navbar navbar-light mb-5">
+    <a id="logo" class="navbar-brand pull-left text-center" href="/">
+      Adearis
+    </a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a [routerLink]="['/home']" routerLinkActive="active-link" class="nav-item nav-link active" href="#">Inicio</a>
+        <a class="nav-item nav-link" href="#">Eventos</a>
+        <a class="nav-item nav-link" href="#">Contacto</a>
+      </div>
     </div>
-  </div>
-  <div class="navbar-expand ml-auto navbar-nav">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/" target="_blank">
-        <i class="fa fa-instagram"></i>
-      </a>
-      <a class="nav-item nav-link" href="/" target="_blank">
-        <i class="fa fa-facebook"></i>
-      </a>
+    <div class="navbar-expand ml-auto navbar-nav">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/" target="_blank">
+          <i class="fa fa-instagram"></i>
+        </a>
+        <a class="nav-item nav-link" href="/" target="_blank">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </div>
     </div>
-  </div>
-</nav>
-<router-outlet style="margin-top: 0"></router-outlet>
+  </nav>
+  <router-outlet style="margin-top: 0"></router-outlet>
+</div>

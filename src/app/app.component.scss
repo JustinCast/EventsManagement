@@ -1,12 +1,45 @@
-nav{
-    border-radius: 15px;
-    margin: 0 0.5% 0 0.5%
+nav {
+  border-radius: 15px;
+  margin: 0 0.5% 0 0.5%;
 }
 .active-link {
-    color: lightseagreen !important;
-    font-weight: bold
+  color: white !important;
+  font-weight: bold;
 }
-#logo{
-    width: 60px;
-    height: 60px;
+#logo {
+  color: white
 }
+#main-nav {
+  background-color: lightseagreen;
+  color: white;
+}
+a{
+    color: white
+}
+i{
+    color: white
+}
+.bg-image {
+    background-image: url("http://www.collabrus.com/collabrus_blog/wp-content/uploads/2013/08/building.jpg");
+    /* Add the blur effect */
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg-text {
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+  }

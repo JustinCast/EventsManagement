@@ -1,12 +1,17 @@
 #header-container {
     width: 100%;
     margin-top: 0;
-    background-color: rgba(0, 123, 145, 0.2);
     padding: 1% 0 1% 0
 }
 #footer-container {
     margin-top: 2%;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    position: absolute;
+}
+img{
+    width: 25%;
+    height: 25%;
 }
 .example-card {
     max-width: 400px;
@@ -33,5 +38,5 @@ hr {
     margin: 1% 1% 1% 1%
 }
 #footer-header {
-    color: darkturquoise
+    color: black;
 }
