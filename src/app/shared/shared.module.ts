@@ -4,7 +4,8 @@ import {
   MatInputModule,
   MatCardModule,
   MatButtonModule,
-  MatRippleModule
+  MatRippleModule,
+  MatIconModule
  } from "@angular/material";
 @NgModule({
   imports: [
@@ -12,13 +13,15 @@ import {
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatRippleModule
+    MatRippleModule,
+    MatIconModule
   ],
   exports: [
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatRippleModule
+    MatRippleModule,
+    MatIconModule
   ],
   declarations: []
 })
