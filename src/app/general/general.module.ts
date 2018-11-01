@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule
   ],
-  declarations: [HomeComponent, LoginComponent],
+  declarations: [HomeComponent, LoginComponent, SignUpComponent],
   exports: [
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ]
 })
 export class GeneralModule { }
