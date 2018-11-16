@@ -23,6 +23,7 @@ import { AddDegreeDialogComponent } from "./Instructor/add-degree-dialog/add-deg
     EditEventDialogComponent,
     AddInstructorComponent,
     ShowInstructorsComponent,
+    AddDegreeDialogComponent
   ],
   entryComponents: [
     EditEventDialogComponent,
