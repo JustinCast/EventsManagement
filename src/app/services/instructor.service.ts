@@ -9,13 +9,14 @@ import { UiService } from "./ui.service";
 })
 export class InstructorService {
   instructors: Array<Instructor> = [];
+  loading: boolean = false;
   constructor(private _http: HttpClient, private ui: UiService) {}
 
   saveInstructor(instructor: Instructor) {
     this._http
       .post(`${environment.server}/saveInstructor`, instructor)
       .subscribe(
-        () => this.ui.openSnackBar("Instructor guardado con éxito", "Ok", 2000),
+        () => {this.ui.openSnackBar("Instructor guardado con éxito", "Ok", 2000); this.loading = false},
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
@@ -24,7 +25,7 @@ export class InstructorService {
     this._http
       .get<Array<Instructor>>(`${environment.server}/getInstructors`)
       .subscribe(
-        instructors => (this.instructors = instructors),
+        instructors => {(this.instructors = instructors); this.loading = false;},
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
@@ -34,12 +35,13 @@ export class InstructorService {
       .put(`${environment.server}/updateInstructor`, instructor)
       .subscribe(
         () =>
-          this.ui.openSnackBar("Instructor actualizado con éxito", "Ok", 2000),
+          {this.ui.openSnackBar("Instructor actualizado con éxito", "Ok", 2000); this.loading = false},
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
 
   handleError(err: HttpErrorResponse) {
+    this.loading = false;
     if (err.error instanceof Error) {
       // Error del lado del cliente
       this.ui.openSnackBar(
