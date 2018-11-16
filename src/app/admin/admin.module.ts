@@ -9,6 +9,8 @@ import { AdminRootComponent } from "./admin-root.component";
 import { SharedModule } from "../shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 import { EditEventDialogComponent } from './Event/edit-event-dialog/edit-event-dialog.component';
+import { AddInstructorComponent } from './Instructor/add-instructor/add-instructor.component';
+import { ShowInstructorsComponent } from './Instructor/show-instructors/show-instructors.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { EditEventDialogComponent } from './Event/edit-event-dialog/edit-event-d
     AddEventComponent,
     ShowEventsComponent,
     AdminRootComponent,
-    EditEventDialogComponent
+    EditEventDialogComponent,
+    AddInstructorComponent,
+    ShowInstructorsComponent
   ],
   entryComponents: [
     EditEventDialogComponent

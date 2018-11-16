@@ -6,6 +6,8 @@ import { AddActivityComponent } from "./Activity/add-activity/add-activity.compo
 import { ShowActivitiesComponent } from "./Activity/show-activities/show-activities.component";
 import { AddEventComponent } from "./Event/add-event/add-event.component";
 import { ShowEventsComponent } from "./Event/show-events/show-events.component";
+import { AddInstructorComponent } from "./Instructor/add-instructor/add-instructor.component";
+import { ShowInstructorsComponent } from "./Instructor/show-instructors/show-instructors.component";
 
 const ROUTES: Routes = [
   {
@@ -16,6 +18,8 @@ const ROUTES: Routes = [
       { path: "show-events", component: ShowEventsComponent },
       { path: "add-activity", component: AddActivityComponent },
       { path: "show-activities", component: ShowActivitiesComponent },
+      { path: "add-instructor", component: AddInstructorComponent },
+      { path: "show-instructors", component: ShowInstructorsComponent },
     ]
   }
 ];

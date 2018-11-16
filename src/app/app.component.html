@@ -1,5 +1,6 @@
 <mat-drawer-container class="example-container" hasBackdrop="true">
   <mat-drawer #drawer mode="push">
+    <h3 class="text-info text-center">Admin dashboard</h3>
     <mat-accordion class="example-headers-align">
       <mat-expansion-panel
         [expanded]="step === 0"
@@ -8,7 +9,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-description>
-            Add Event
+            Event
             <mat-icon class="ml-2">school</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
@@ -21,6 +22,66 @@
           Add
         </button>
         <button [routerLink]="['/admin/show-events']"
+          class="ml-4"
+          mat-stroked-button
+          color="accent"
+          (click)="drawer.close()"
+        >
+          Show
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel
+        [expanded]="step === 1"
+        (opened)="setStep(1)"
+        hideToggle
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            Activities
+            <mat-icon class="ml-2">style</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <hr>
+        <button [routerLink]="['/admin/add-activity']"
+          mat-stroked-button
+          color="primary"
+          (click)="drawer.close()"
+        >
+          Add
+        </button>
+        <button [routerLink]="['/admin/show-activities']"
+          class="ml-4"
+          mat-stroked-button
+          color="accent"
+          (click)="drawer.close()"
+        >
+          Show
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel
+        [expanded]="step === 2"
+        (opened)="setStep(2)"
+        hideToggle
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            Instructors
+            <mat-icon class="ml-2">supervisor_account</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <hr>
+        <button [routerLink]="['/admin/add-instructor']"
+          mat-stroked-button
+          color="primary"
+          (click)="drawer.close()"
+        >
+          Add
+        </button>
+        <button [routerLink]="['/admin/show-instructors']"
           class="ml-4"
           mat-stroked-button
           color="accent"
