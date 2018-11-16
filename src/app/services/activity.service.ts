@@ -5,6 +5,6 @@ import { Activity } from '../models/Activity';
   providedIn: 'root'
 })
 export class ActivityService {
-  activities: Array<Activity>;
+  activities: Array<Activity> = [];
   constructor() { }
 }

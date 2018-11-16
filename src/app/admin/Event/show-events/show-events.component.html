@@ -6,11 +6,7 @@
   >
     <li
       class="activity"
-      *ngFor="
-        let a of (_activityService.activities
-          | paginate: { itemsPerPage: 5, currentPage: p });
-        let i = index
-      "
+      *ngFor="let a of _activityService.activities | paginate: { itemsPerPage: 5, currentPage: p };let i = index"
     >
       <mat-card class="text-center">
         <h4 class="text-primary">{{ a.name }}</h4>
