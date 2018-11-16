@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule } from "@angular/router";
 import { ROUTES } from './app.routing';
 import { GeneralModule } from './general/general.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { GeneralModule } from './general/general.module';
     BrowserAnimationsModule,
     SharedModule,
     GeneralModule,
+    AdminModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],

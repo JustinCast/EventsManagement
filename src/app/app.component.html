@@ -13,14 +13,14 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <hr>
-        <button
+        <button [routerLink]="['/admin/add-event']"
           mat-stroked-button
           color="primary"
           (click)="drawer.close()"
         >
           Add
         </button>
-        <button
+        <button [routerLink]="['/admin/show-events']"
           class="ml-4"
           mat-stroked-button
           color="accent"
