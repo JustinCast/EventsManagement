@@ -26,22 +26,22 @@ module.exports.set = app => {
    app.post('/createEvent',event.createEvent);
    app.put('/updateEvent',event.updateEvent);
    app.delete('/deleteEvent',event.deleteEvent);
-   app.get('/createEvent',event.readEvent);
+   app.get('/getEvents',event.readEvent);
 
    // Grade
    app.post('/createGrade',grade.createGrade);
    app.put('/updateGrade',grade.updateGrade);
    app.delete('/deleteGrade',grade.deleteGrade);
-   app.get('/createGrade',grade.readGrade);
+   app.get('/getGrades',grade.readGrade);
 
    // Instructor
    app.post('/createInstructor',instructor.createInstructor);
    app.put('/updateInstructor',instructor.updateInstructor);
    app.delete('/deleteInstructor',instructor.deleteInstructor);
-   app.get('/createInstructor',instructor.readInstructor);
+   app.get('/getInstructors',instructor.readInstructor);
    
    // Reservation
    app.post('/createReservation',reservation.createReservation);
    app.delete('/deleteReservation',reservation.deleteReservation);
-   app.get('/createReservation',reservation.readReservation);
+   app.get('/getReservations',reservation.readReservation);
 }

@@ -14,7 +14,7 @@ export class InstructorService {
 
   saveInstructor(instructor: Instructor) {
     this._http
-      .post(`${environment.server}/saveInstructor`, instructor)
+      .post(`${environment.server}/createInstructor`, instructor)
       .subscribe(
         () => {this.ui.openSnackBar("Instructor guardado con éxito", "Ok", 2000); this.loading = false},
         (err: HttpErrorResponse) => this.handleError(err)
