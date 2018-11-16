@@ -15,7 +15,11 @@ import { ReservationDialogComponent } from './reservation-dialog/reservation-dia
   exports: [
     HomeComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ReservationDialogComponent
+  ],
+  entryComponents: [
+    ReservationDialogComponent
   ]
 })
 export class GeneralModule { }
