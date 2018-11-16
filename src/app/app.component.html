@@ -1,26 +1,42 @@
-<div class="bg-image"></div>
-<div class="bg-text">
-  <nav id="main-nav" class="shadow navbar navbar-light mb-5">
-    <a id="logo" class="navbar-brand pull-left text-center" href="/">
-      Adearis
-    </a>
-    <div class="navbar-expand mr-auto">
-      <div class="navbar-nav">
-        <a [routerLink]="['/home']" routerLinkActive="active-link" class="nav-item nav-link active" href="#">Inicio</a>
-        <a class="nav-item nav-link" href="#">Eventos</a>
-        <a class="nav-item nav-link" href="#">Contacto</a>
-      </div>
-    </div>
-    <div class="navbar-expand ml-auto navbar-nav">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/" target="_blank">
-          <i class="fa fa-instagram"></i>
+<mat-drawer-container class="example-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="push"> </mat-drawer>
+  <mat-drawer-content>
+    <div class="bg-text">
+      <nav id="main-nav" class="shadow navbar navbar-light mb-5">
+        <a
+          style="cursor: pointer"
+          class="navbar-brand text-white"
+          (click)="drawer.toggle()"
+          ><mat-icon>menu</mat-icon></a
+        >
+        <a id="logo" class="navbar-brand pull-left text-center" href="/">
+          Adearis
         </a>
-        <a class="nav-item nav-link" href="/" target="_blank">
-          <i class="fa fa-facebook"></i>
-        </a>
-      </div>
+        <div class="navbar-expand mr-auto">
+          <div class="navbar-nav">
+            <a
+              [routerLink]="['/home']"
+              routerLinkActive="active-link"
+              class="nav-item nav-link active"
+              href="#"
+              >Inicio</a
+            >
+            <a class="nav-item nav-link" href="#">Eventos</a>
+            <a class="nav-item nav-link" href="#">Contacto</a>
+          </div>
+        </div>
+        <div class="navbar-expand ml-auto navbar-nav">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/" target="_blank">
+              <i class="fa fa-instagram"></i>
+            </a>
+            <a class="nav-item nav-link" href="/" target="_blank">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <router-outlet style="margin-top: 0"></router-outlet>
     </div>
-  </nav>
-  <router-outlet style="margin-top: 0"></router-outlet>
-</div>
+  </mat-drawer-content>
+</mat-drawer-container>
