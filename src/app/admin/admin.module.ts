@@ -8,6 +8,7 @@ import { ShowEventsComponent } from "./Event/show-events/show-events.component";
 import { AdminRootComponent } from "./admin-root.component";
 import { SharedModule } from "../shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
+import { EditEventDialogComponent } from './Event/edit-event-dialog/edit-event-dialog.component';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,13 @@ import { HttpClientModule } from "@angular/common/http";
     ShowActivitiesComponent,
     AddEventComponent,
     ShowEventsComponent,
-    AdminRootComponent
+    AdminRootComponent,
+    EditEventDialogComponent
+  ],
+  entryComponents: [
+    EditEventDialogComponent
   ],
   imports: [CommonModule, AdminRouting, SharedModule, HttpClientModule],
-  exports: [AdminRootComponent]
+  exports: [AdminRootComponent, EditEventDialogComponent]
 })
 export class AdminModule {}

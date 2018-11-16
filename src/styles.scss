@@ -10,3 +10,7 @@ html {
 .align {
   vertical-align: top;
 }
+.dialog .mat-dialog-container {
+  border-radius: 25px;
+  padding-bottom: 0;
+}
