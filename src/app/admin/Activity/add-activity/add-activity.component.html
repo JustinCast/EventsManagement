@@ -1,3 +1,36 @@
-<p>
-  add-activity works!
-</p>
+<form [formGroup]="activityGroup" (ngSubmit)="onSubmit()" class="container text-center shadow p-2 rounded">
+  <h3 class="text-info">Add activity</h3>
+  <hr>
+  <mat-form-field>
+    <input matInput [formControl]="activityGroup.get('name')" type="text" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="activityGroup.get('duration')" type="text" />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [formControl]="activityGroup.get('activity_date')"
+      [matDatepicker]="activity_date"
+      placeholder="Activity date"
+    />
+    <mat-datepicker-toggle matSuffix [for]="activity_date"></mat-datepicker-toggle>
+    <mat-datepicker #activity_date></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="activityGroup.get('place')" type="text" placeholder="Place">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="activityGroup.get('saloon')" type="text" placeholder="Saloon">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="activityGroup.get('entry')" type="text" placeholder="Entry">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput [formControl]="activityGroup.get('requirements')" placeholder="Requirements"></textarea>
+  </mat-form-field>
+  <hr>
+  <div class="container text-center">
+    <button mat-stroked-button [disabled]="!activityGroup.valid"><mat-icon>done</mat-icon></button>
+  </div>
+</form>
