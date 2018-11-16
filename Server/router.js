@@ -7,5 +7,8 @@ const instructor = require('./instructor/instructor');
 const reservation = require('./reservation/reservation');
 const user = require('./user/user');
 module.exports.set = app => {
-   // app.post('/register', queries.register);
+
+   // User
+   app.post('/registerUser',user.registerUser);
+   app.post('/loginUser',user.loginUser);
 }

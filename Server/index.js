@@ -25,7 +25,7 @@ function config() {
     });
   }
 config();
-app.use("/api/v1/", express.static('client'));
+app.use("/api/v1", express.static('client'));
 router.set(app);
 
 app.listen(3000, () => console.log('App listening on port ' + 3000)); //Listener
