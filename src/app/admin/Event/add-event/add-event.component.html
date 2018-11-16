@@ -1,3 +1,64 @@
-<p>
-  add-event works!
-</p>
+<form class="container text-center" [formGroup]="eventGroup">
+  <mat-form-field>
+    <input
+      matInput
+      [formControl]="eventGroup.get('name')"
+      placeholder="Event name"
+      type="text"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [formControl]="eventGroup.get('country')">
+      <mat-option *ngFor="let c of allCountries" [value]="c">{{
+        c
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [formControl]="eventGroup.get('phone')"
+      type="tel"
+      placeholder="Phone"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [formControl]="eventGroup.get('website')"
+      type="text"
+      placeholder="Website"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [formControl]="eventGroup.get('email')"
+      type="email"
+      placeholder="Email"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <textarea
+      matInput
+      [formControl]="eventGroup.get('description')"
+      type="text"
+      placeholder="Email"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="eventGroup.get('year')" [matDatepicker]="picker" placeholder="Year" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker startView="year" #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="eventGroup.get('startDate')" [matDatepicker]="startDate" placeholder="Start date" />
+    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+    <mat-datepicker #startDate></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="eventGroup.get('finishDate')" [matDatepicker]="finishDate" placeholder="Finish date" />
+    <mat-datepicker-toggle matSuffix [for]="finishDate"></mat-datepicker-toggle>
+    <mat-datepicker #finishDate></mat-datepicker>
+  </mat-form-field>
+</form>

@@ -6,6 +6,7 @@ import { ShowActivitiesComponent } from "./Activity/show-activities/show-activit
 import { AddEventComponent } from "./Event/add-event/add-event.component";
 import { ShowEventsComponent } from "./Event/show-events/show-events.component";
 import { AdminRootComponent } from "./admin-root.component";
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { AdminRootComponent } from "./admin-root.component";
     ShowEventsComponent,
     AdminRootComponent
   ],
-  imports: [CommonModule, AdminRouting],
+  imports: [CommonModule, AdminRouting, SharedModule],
   exports: [
     AdminRootComponent
   ]

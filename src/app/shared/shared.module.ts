@@ -7,8 +7,12 @@ import {
   MatRippleModule,
   MatIconModule,
   MatSidenavModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule
  } from "@angular/material";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +22,12 @@ import {
     MatRippleModule,
     MatIconModule,
     MatSidenavModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatInputModule,
@@ -27,7 +36,12 @@ import {
     MatRippleModule,
     MatIconModule,
     MatSidenavModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: []
 })
