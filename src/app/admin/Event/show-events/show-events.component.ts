@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivityService } from 'src/app/services/activity.service';
 
 @Component({
   selector: 'app-show-events',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowEventsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _activityService: ActivityService) { }
 
   ngOnInit() {
   }
 
+  editActivity(index: number) {
+
+  }
+
+  deleteActivity(index: number) {
+
+  }
 }

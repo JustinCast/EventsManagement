@@ -7,8 +7,8 @@ export class Organization {
         public email?: string,
         public description?: string,
         public year?: number,
-        public startDate?: Date,
-        public finishDate?: Date,
+        public start_date?: Date,
+        public finish_date?: Date,
         public id?: number
     ){}
 }

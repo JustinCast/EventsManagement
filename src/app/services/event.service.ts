@@ -28,6 +28,15 @@ export class EventService {
       );
   }
 
+  updateEvent(event: Organization) {
+    this._http
+      .put(`${environment.server}/updateEvent/${event.id}`, event)
+      .subscribe(
+        () => this.ui.openSnackBar("Evento actualizado con éxito", "Ok", 2000),
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
+  }
+
   handleError(err: HttpErrorResponse) {
     if (err.error instanceof Error) {
       // Error del lado del cliente

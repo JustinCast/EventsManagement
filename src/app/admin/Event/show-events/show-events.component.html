@@ -1,3 +1,67 @@
-<p>
-  show-events works!
-</p>
+<div class="container">
+  <ul
+    id="activities-container"
+    class="container"
+    *ngIf="_activityService.activities; else: progressbar"
+  >
+    <li
+      class="activity"
+      *ngFor="
+        let a of (_activityService.activities
+          | paginate: { itemsPerPage: 5, currentPage: p });
+        let i = index
+      "
+    >
+      <mat-card class="text-center">
+        <h4 class="text-primary">{{ a.name }}</h4>
+        <hr />
+        <mat-card-content>
+          <ul id="phones">
+            <li>
+              <mat-icon class="align">alarm</mat-icon>{{ a.duration }}
+            </li>
+            <li>
+              <mat-icon class="align">calendar_today</mat-icon>{{ a.activity_date | date }}
+            </li>
+            <li>
+              <mat-icon class="align">business</mat-icon>{{ a.place }}
+            </li>
+            <li>
+              <mat-icon class="align">pin_drop</mat-icon>{{ a.saloon }}
+            </li>
+            <li>
+              <mat-icon class="align">person</mat-icon>{{ a.entry }}
+            </li>
+            <li>
+              <mat-icon class="align">priority_high</mat-icon>{{ a.requirements }}
+            </li>
+          </ul>
+        </mat-card-content>
+        <hr />
+        <mat-card-actions class="text-center">
+          <button mat-button (click)="editActivity(i)" color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-button
+            (click)="deleteActivity(i)"
+            color="warn"
+            class="ml-2"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  </ul>
+  <ng-template #progressbar>
+    <div id="loading" class="container">
+      <h2 class="text-center text-primary">Loading</h2>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </ng-template>
+</div>
+<pagination-controls
+  *ngIf="_activityService.activities && _activityService.activities.length > 5"
+  (pageChange)="p = $event"
+></pagination-controls>
