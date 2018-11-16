@@ -11,7 +11,7 @@ function setConfigDefault(){
 }
 
 // Register User 
-function registerUser(req, res) {
+function createUser(req, res) {
     // Set Connect
     setConfigDefault();
 
@@ -89,6 +89,6 @@ function loginUser(req, res) {
 
 
 module.exports = {
-    registerUser,
+    createUser,
     loginUser
 }
