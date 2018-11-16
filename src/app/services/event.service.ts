@@ -13,8 +13,17 @@ export class EventService {
   saveEvent(event: Organization) {
     this._http
       .post(`${environment.server}saveEvent`, event)
-      .subscribe(() =>
-        this.ui.openSnackBar("Evento guardado con éxito", "Ok", 2000),
+      .subscribe(
+        () => this.ui.openSnackBar("Evento guardado con éxito", "Ok", 2000),
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
+  }
+
+  deleteEvent(event: Organization) {
+    this._http
+      .delete(`${environment.server}deleteEvent/${event.id}`)
+      .subscribe(
+        () => this.ui.openSnackBar("Evento eliminado con éxito", "Ok", 2000),
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
@@ -22,14 +31,20 @@ export class EventService {
   handleError(err: HttpErrorResponse) {
     if (err.error instanceof Error) {
       // Error del lado del cliente
-      console.log("An error occurred:", err.error.message);
+      this.ui.openSnackBar(
+        `An error occurred: ${err.error.message}`,
+        "Ok",
+        5000
+      );
     } else {
       // The backend returned an unsuccessful response code.
       // Error del lado del backend
-      console.log(
+      this.ui.openSnackBar(
         `Backend returned code ${err.status}, body was: ${JSON.stringify(
           err.error
-        )}`
+        )}`,
+        "Ok",
+        5000
       );
     }
   }
