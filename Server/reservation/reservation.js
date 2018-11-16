@@ -22,8 +22,8 @@ function createReservation(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            const query = `insert into reservation(id_activity,id_user,confirmation,reservation_date)
-             values ('`+req.body.id_activity+`','`+req.body.id_user+`','`+req.body.confirmation+`','`+req.body.reservation_date+`')`;
+            const query = `insert into reservation(id_activity,id_user,confirmation)
+             values ('`+req.body.id_activity+`','`+req.body.id_user+`','`+req.body.confirmation+`')`;
             client
             .query(query)
             .then(data => {

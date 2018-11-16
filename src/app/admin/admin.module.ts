@@ -23,9 +23,6 @@ import { ShowInstructorsComponent } from './Instructor/show-instructors/show-ins
     AddInstructorComponent,
     ShowInstructorsComponent
   ],
-  entryComponents: [
-    EditEventDialogComponent
-  ],
   imports: [CommonModule, AdminRouting, SharedModule, HttpClientModule],
   exports: [AdminRootComponent, EditEventDialogComponent]
 })
