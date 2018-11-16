@@ -19,6 +19,8 @@ export class DialogManagerService {
     });
   }
 
+
+
   openAddDegreeDialog() {
     return this.dialog.open(AddDegreeDialogComponent, {
       width: '50%',

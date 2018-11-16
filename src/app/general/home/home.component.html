@@ -1,0 +1,35 @@
+<div class="container">
+    <div *ngIf="act.activities.length != 0;else progressbar">
+        <div class="row">
+            <div class="col-sm" *ngFor="let act of act.activities;let i = index">
+                <mat-card class="example-card shadow">
+                    <mat-card-header>
+                        <mat-card-title class="text-info text-center">{{act.name}}</mat-card-title>
+                    </mat-card-header>    
+                    <hr>
+                    <mat-card-content>
+                        <h6>Duration: <span class="color-twitter">{{act.duration}}</span></h6>
+                        <h6>Place: <span class="color-twitter text-capitalize">{{act.place}}</span></h6>
+                        <h6>Saloon: <span class="color-twitter text-capitalize">{{act.saloon}}</span></h6> 
+                        <h6>Entry: <span class="color-twitter">{{act.entry}}</span></h6>
+                        <h6>Date: <span class="color-twitter">{{act.activity_date | date}}</span></h6>
+                        <h6 *ngIf="act.requirements != undefined && act.requirements.length > 0">Requirements: <span class="color-twitter">{{act.requirements}}</span></h6>          
+                    </mat-card-content>
+                    
+                    <div class="container text-center">
+                        <mat-card-actions>
+                            <button mat-stroked-button color="primary" (click)="openDialog(i)"><mat-icon>add</mat-icon></button>
+                        </mat-card-actions>
+                    </div>
+                    
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <ng-template #progressbar>
+        <div id="loading" class="container">
+        <h2 class="text-center text-primary">Loading</h2>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+    </ng-template>
+</div>
