@@ -1,33 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivityService } from 'src/app/services/activity.service';
-import { RecervationService } from 'src/app/services/recervation.service';
-import { Reservation } from 'src/app/models/Reservation';
+import { Component, OnInit } from "@angular/core";
+import { ActivityService } from "src/app/services/activity.service";
+import { ReservationService } from "src/app/services/recervation.service";
+import { Reservation } from "src/app/models/Reservation";
+import { InStorageService } from "src/app/services/in-storage.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-
-  constructor(public act: ActivityService,
-              public res: RecervationService
-              ) { 
-    this.act.getActivities();    
+  constructor(
+    public act: ActivityService,
+    public res: ReservationService,
+    private _in: InStorageService
+  ) {
+    this.act.getActivities();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  
-  reservation(i : number){
+  reservation(i: number) {
     let body: Reservation = {
       id_activity: this.act.activities[i].id,
-      id_user: 1, // FALTA,
+      id_user: this._in.getUser().id, // FALTA,
       confirmation: false
-    }
+    };
 
     this.res.saveReservation(body);
   }
-
 }

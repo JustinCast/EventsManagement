@@ -9,7 +9,7 @@ import { Reservation } from '../models/Reservation';
 @Injectable({
   providedIn: 'root'
 })
-export class RecervationService {
+export class ReservationService {
     constructor(private _http: HttpClient, private ui: UiService ) {}
 
     saveReservation(reservation: Reservation) {

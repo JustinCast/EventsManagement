@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
   signupGroup: FormGroup;
-  constructor(private _fb: FormBuilder) { 
+  constructor(private _fb: FormBuilder, private _user: UserService) { 
     this.signupGroup = this._fb.group({
       'name': ['', Validators.required],
       'lastname': ['', Validators.required],
@@ -30,7 +31,9 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    
+    this._user.saveUser(
+      
+    )
   }
 
   allcountries: Array<string> = [

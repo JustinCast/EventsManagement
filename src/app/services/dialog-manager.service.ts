@@ -5,7 +5,6 @@ import { Organization } from '../models/Organization';
 import { AddDegreeDialogComponent } from '../admin/Instructor/add-degree-dialog/add-degree-dialog.component';
 import { Degree } from '../models/Degree';
 import { Observable } from 'rxjs';
-import { ReservationDialogComponent } from '../general/reservation-dialog/reservation-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +27,5 @@ export class DialogManagerService {
       height: '35%',
       panelClass: 'dialog'
     }).afterClosed();
-  }
-
-  openReservationDialog() {
-    this.dialog.open(ReservationDialogComponent, {
-      width: '50%',
-      height: '35%',
-      panelClass: 'dialog'
-    });
   }
 }

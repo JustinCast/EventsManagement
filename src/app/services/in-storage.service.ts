@@ -9,18 +9,18 @@ export class InStorageService {
   constructor() { }
 
   login(user: User){
-    localStorage.setItem(String(user.dni), JSON.stringify(user));
+    localStorage.setItem('logged', JSON.stringify(user));
   }
 
-  isLoggedIn(dni: number): boolean {
-    return localStorage.getItem(String(dni)) !== undefined;
+  isLoggedIn(): boolean {
+    return localStorage.getItem('logged') !== undefined;
   }
 
-  logout(dni) {
-    localStorage.removeItem(String(dni));
+  logout() {
+    localStorage.removeItem('logged');
   }
 
-  getUser(dni: number): User {
-    return JSON.parse(localStorage.getItem(String(dni)));
+  getUser(): User {
+    return JSON.parse(localStorage.getItem('logged'));
   }
 }
