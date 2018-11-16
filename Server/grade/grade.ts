@@ -10,8 +10,8 @@ function setConfigDefault(){
     config.port = 5432;
 }
 
-// Create Event 
-function createEvent(req, res) {
+// Create Grade 
+function createGrade(req, res) {
     // Set Connect
     setConfigDefault();
     var client = new pg.Client(config);
@@ -22,9 +22,8 @@ function createEvent(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            const query = `insert into event(name,country,phone,website,email,description,year,start_date,finish_date)
-             values ('`+req.body.name+`','`+req.body.country+`','`+req.body.phone+`','`+req.body.website+`','`+req.body.email+`',
-             '`+req.body.description+`','`+req.body.start_date+`','`+req.body.finish_date+`')`;
+            const query = `insert into grade(name,institution,id_instructor)
+             values ('`+req.body.name+`','`+req.body.institution+`','`+req.body.id_instructor+`')`;
             client
             .query(query)
             .then(data => {
@@ -41,8 +40,8 @@ function createEvent(req, res) {
     });
 };
 
-// Update Event 
-function updateEvent(req, res) {
+// Update Grade 
+function updateGrade(req, res) {
     // Set Connect
     setConfigDefault();
     var client = new pg.Client(config);
@@ -53,8 +52,7 @@ function updateEvent(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            const query = `update event set name= '`+req.body.name+`',country = '`+req.body.country+`',phone = '`+req.body.phone+`',website = '`+req.body.website+`', email = '`+req.body.email+`',
-            description = '`+req.body.description+`', start_date = '`+req.body.start_date+`', finish_date = '`+req.body.finish_date+`' where id = '`+req.body.id+`'`;
+            const query = `update grade set name = '`+req.body.name+`',institution = '`+req.body.institution+`',id_instructor = '`+req.body.id_instructor+`' where id = '`+req.body.id+`'`;
             client
             .query(query)
             .then(data => {
@@ -71,8 +69,8 @@ function updateEvent(req, res) {
     });
 };
 
-// Delete Event 
-function deleteEvent(req, res) {
+// Delete Grade 
+function deleteGrade(req, res) {
     // Set Connect
     setConfigDefault();
     var client = new pg.Client(config);
@@ -83,7 +81,7 @@ function deleteEvent(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            const query = `delete from event where id = '`+req.body.id+`'`;
+            const query = `delete from grade where id = '`+req.body.id+`'`;
             client
             .query(query)
             .then(data => {
@@ -101,8 +99,8 @@ function deleteEvent(req, res) {
 
 };
 
-// Delete Event 
-function readEvent(req, res) {
+// Delete Grade 
+function readGrade(req, res) {
     // Set Connect
     setConfigDefault();
     var client = new pg.Client(config);
@@ -113,7 +111,7 @@ function readEvent(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            const query = `select * from event`;
+            const query = `select * from grade`;
             client
             .query(query)
             .then(data => {
@@ -134,8 +132,8 @@ function readEvent(req, res) {
 
 
 module.exports = {
-    createEvent,
-    updateEvent,
-    deleteEvent,
-    readEvent
+    createGrade,
+    updateGrade,
+    deleteGrade,
+    readGrade
 }
