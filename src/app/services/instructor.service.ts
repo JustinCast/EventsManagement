@@ -1,47 +1,40 @@
 import { Injectable } from "@angular/core";
+import { Instructor } from "../models/Instructor";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { UiService } from "./ui.service";
-import { Organization } from "../models/Organization";
 
 @Injectable({
   providedIn: "root"
 })
-export class EventService {
-  events: Array<Organization> = [];
+export class InstructorService {
+  instructors: Array<Instructor> = [];
   constructor(private _http: HttpClient, private ui: UiService) {}
 
-  saveEvent(event: Organization) {
+  saveInstructor(instructor: Instructor) {
     this._http
-      .post(`${environment.server}saveEvent`, event)
+      .post(`${environment.server}/saveInstructor`, instructor)
       .subscribe(
-        () => this.ui.openSnackBar("Evento guardado con éxito", "Ok", 2000),
+        () => this.ui.openSnackBar("Instructor guardado con éxito", "Ok", 2000),
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
 
-  getEvents() {
-    this._http.get<Array<Organization>>(`${environment.server}/getEvents`)
-    .subscribe(
-      (events) => this.events = events,
-      (err: HttpErrorResponse) => this.handleError(err)
-    );
-  }
-
-  deleteEvent(event: Organization) {
+  getInstructors() {
     this._http
-      .delete(`${environment.server}deleteEvent/${event.id}`)
+      .get<Array<Instructor>>(`${environment.server}/getInstructors`)
       .subscribe(
-        () => this.ui.openSnackBar("Evento eliminado con éxito", "Ok", 2000),
+        instructors => (this.instructors = instructors),
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
 
-  updateEvent(event: Organization) {
+  updateInstructor(instructor: Instructor) {
     this._http
-      .put(`${environment.server}/updateEvent`, event)
+      .put(`${environment.server}/updateInstructor`, instructor)
       .subscribe(
-        () => this.ui.openSnackBar("Evento actualizado con éxito", "Ok", 2000),
+        () =>
+          this.ui.openSnackBar("Instructor actualizado con éxito", "Ok", 2000),
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
