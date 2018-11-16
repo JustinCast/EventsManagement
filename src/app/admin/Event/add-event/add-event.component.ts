@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-
+import { EventService } from "src/app/services/event.service";
+import { Organization } from "../../../models/Organization";
 @Component({
   selector: "app-add-event",
   templateUrl: "./add-event.component.html",
@@ -8,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class AddEventComponent implements OnInit {
   eventGroup: FormGroup
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private eventService: EventService) {
     this.eventGroup = this._fb.group({
       'name': ['', Validators.required],
       'country': ['', Validators.required],
@@ -23,6 +24,22 @@ export class AddEventComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  onSubmit() {
+    this.eventService.saveEvent(
+      new Organization(
+        this.eventGroup.get('name').value,
+        this.eventGroup.get('country').value,
+        this.eventGroup.get('phone').value,
+        this.eventGroup.get('website').value,
+        this.eventGroup.get('email').value,
+        this.eventGroup.get('description').value,
+        this.eventGroup.get('year').value,
+        this.eventGroup.get('startDate').value,
+        this.eventGroup.get('finishDate').value,
+      )
+    );
+  }
   
   
   

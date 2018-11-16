@@ -7,7 +7,7 @@ import { AddEventComponent } from "./Event/add-event/add-event.component";
 import { ShowEventsComponent } from "./Event/show-events/show-events.component";
 import { AdminRootComponent } from "./admin-root.component";
 import { SharedModule } from "../shared/shared.module";
-
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -17,9 +17,7 @@ import { SharedModule } from "../shared/shared.module";
     ShowEventsComponent,
     AdminRootComponent
   ],
-  imports: [CommonModule, AdminRouting, SharedModule],
-  exports: [
-    AdminRootComponent
-  ]
+  imports: [CommonModule, AdminRouting, SharedModule, HttpClientModule],
+  exports: [AdminRootComponent]
 })
 export class AdminModule {}
