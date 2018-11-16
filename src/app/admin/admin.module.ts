@@ -11,6 +11,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { EditEventDialogComponent } from './Event/edit-event-dialog/edit-event-dialog.component';
 import { AddInstructorComponent } from './Instructor/add-instructor/add-instructor.component';
 import { ShowInstructorsComponent } from './Instructor/show-instructors/show-instructors.component';
+import { AddDegreeDialogComponent } from "./Instructor/add-degree-dialog/add-degree-dialog.component";
 
 @NgModule({
   declarations: [
@@ -21,9 +22,13 @@ import { ShowInstructorsComponent } from './Instructor/show-instructors/show-ins
     AdminRootComponent,
     EditEventDialogComponent,
     AddInstructorComponent,
-    ShowInstructorsComponent
+    ShowInstructorsComponent,
+  ],
+  entryComponents: [
+    EditEventDialogComponent,
+    AddDegreeDialogComponent
   ],
   imports: [CommonModule, AdminRouting, SharedModule, HttpClientModule],
-  exports: [AdminRootComponent, EditEventDialogComponent]
+  exports: [AdminRootComponent, EditEventDialogComponent, AddDegreeDialogComponent]
 })
 export class AdminModule {}

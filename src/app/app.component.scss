@@ -9,17 +9,18 @@ nav {
   font-weight: bold;
 }
 #logo {
-  color: white
+  color: white;
 }
 #main-nav {
   background-color: lightseagreen;
   color: white;
 }
-a{
-    color: white
+a {
+  color: white;
+  cursor: pointer;
 }
-i{
-    color: white
+i {
+  color: white;
 }
 .example-container {
   position: absolute;
@@ -33,4 +34,15 @@ mat-drawer {
   width: 25%;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+@media screen and (min-width: 601px) {
+  .mat-drawer {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .mat-drawer {
+    width: 70%;
+  }
 }

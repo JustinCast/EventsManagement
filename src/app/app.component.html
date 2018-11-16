@@ -13,15 +13,17 @@
             <mat-icon class="ml-2">school</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <hr>
-        <button [routerLink]="['/admin/add-event']"
+        <hr />
+        <button
+          [routerLink]="['/admin/add-event']"
           mat-stroked-button
           color="primary"
           (click)="drawer.close()"
         >
           Add
         </button>
-        <button [routerLink]="['/admin/show-events']"
+        <button
+          [routerLink]="['/admin/show-events']"
           class="ml-4"
           mat-stroked-button
           color="accent"
@@ -43,15 +45,17 @@
             <mat-icon class="ml-2">style</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <hr>
-        <button [routerLink]="['/admin/add-activity']"
+        <hr />
+        <button
+          [routerLink]="['/admin/add-activity']"
           mat-stroked-button
           color="primary"
           (click)="drawer.close()"
         >
           Add
         </button>
-        <button [routerLink]="['/admin/show-activities']"
+        <button
+          [routerLink]="['/admin/show-activities']"
           class="ml-4"
           mat-stroked-button
           color="accent"
@@ -73,15 +77,17 @@
             <mat-icon class="ml-2">supervisor_account</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <hr>
-        <button [routerLink]="['/admin/add-instructor']"
+        <hr />
+        <button
+          [routerLink]="['/admin/add-instructor']"
           mat-stroked-button
           color="primary"
           (click)="drawer.close()"
         >
           Add
         </button>
-        <button [routerLink]="['/admin/show-instructors']"
+        <button
+          [routerLink]="['/admin/show-instructors']"
           class="ml-4"
           mat-stroked-button
           color="accent"
@@ -111,19 +117,17 @@
               routerLinkActive="active-link"
               class="nav-item nav-link active"
               href="#"
-              >Inicio</a
+              >Home</a
             >
-            <a class="nav-item nav-link" href="#">Eventos</a>
-            <a class="nav-item nav-link" href="#">Contacto</a>
           </div>
         </div>
         <div class="navbar-expand ml-auto navbar-nav">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/" target="_blank">
-              <i class="fa fa-instagram"></i>
+            <a class="nav-item nav-link" [routerLink]="['/login']">
+              <i class="material-icons align">keyboard_tab</i>
             </a>
-            <a class="nav-item nav-link" href="/" target="_blank">
-              <i class="fa fa-facebook"></i>
+            <a class="nav-item nav-link" [routerLink]="['/signup']">
+              <i class="material-icons align">subdirectory_arrow_left</i>
             </a>
           </div>
         </div>

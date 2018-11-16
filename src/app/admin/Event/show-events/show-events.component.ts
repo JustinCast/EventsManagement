@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivityService } from "src/app/services/activity.service";
 import { DialogManagerService } from "src/app/services/dialog-manager.service";
+import { EventService } from "src/app/services/event.service";
 
 @Component({
   selector: "app-show-events",
@@ -9,14 +9,14 @@ import { DialogManagerService } from "src/app/services/dialog-manager.service";
 })
 export class ShowEventsComponent implements OnInit {
   constructor(
-    private _activityService: ActivityService,
+    private _events: EventService,
     private _dialog: DialogManagerService
   ) {}
 
   ngOnInit() {}
 
-  editActivity(index: number) {
-    this._dialog.openEditEvent(this._activityService.activities[index]);
+  editEvent(index: number) {
+    
   }
 
   deleteActivity(index: number) {}

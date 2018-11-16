@@ -1,18 +1,18 @@
 <div class="container">
   <ul
-    id="activities-container"
+    id="events-container"
     class="container"
-    *ngIf="_activityService.activities; else: progressbar"
+    *ngIf="_events.events; else: progressbar"
   >
     <li
-      class="activity"
-      *ngFor="let a of _activityService.activities | paginate: { itemsPerPage: 5, currentPage: p };let i = index"
+      class="event"
+      *ngFor="let a of _events.events | paginate: { itemsPerPage: 5, currentPage: p };let i = index"
     >
       <mat-card class="text-center">
         <h4 class="text-primary">{{ a.name }}</h4>
         <hr />
         <mat-card-content>
-          <ul id="phones">
+          <ul>
             <li>
               <mat-icon class="align">alarm</mat-icon>{{ a.duration }}
             </li>
