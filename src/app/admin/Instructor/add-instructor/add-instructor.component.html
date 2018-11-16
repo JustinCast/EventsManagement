@@ -1,3 +1,41 @@
-<p>
-  add-instructor works!
-</p>
+<form class="container text-center shadow p-3" [formGroup]="instructorGroup" (ngSubmit)="onSubmit()">
+  <h3 class="text-info">Add instructor</h3>
+  <mat-form-field>
+    <input matInput [formControl]="instructorGroup.get('name')" type="text" placeholder="Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="instructorGroup.get('lastname')" type="text" placeholder="Last names">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="instructorGroup.get('dni')" type="text" placeholder="DNI">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [formControl]="instructorGroup.get('gender')">
+      <mat-option value="true">Male</mat-option>
+      <mat-option value="false">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [formControl]="instructorGroup.get('country')">
+      <mat-option *ngFor="let c of allcountries" value="c">{{c}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="instructorGroup.get('state')" placeholder="State">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="instructorGroup.get('phone')" type="tel" placeholder="Phone">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="instructorGroup.get('passport')" type="text" placeholder="Passport">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="instructorGroup.get('mail')" type="email" placeholder="Email">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput [formControl]="instructorGroup.get('description')" placeholder="Description"></textarea>
+  </mat-form-field>
+  <div class="container text-center">
+    <button type="submit" mat-stroked-button [disabled]="!instructorGroup.valid"><mat-icon>done</mat-icon></button>
+  </div>
+</form>
