@@ -117,18 +117,16 @@
               routerLinkActive="active-link"
               class="nav-item nav-link active"
               href="#"
-              >Inicio</a
+              >Home</a
             >
-            <a class="nav-item nav-link" href="#">Eventos</a>
-            <a class="nav-item nav-link" href="#">Contacto</a>
           </div>
         </div>
         <div class="navbar-expand ml-auto navbar-nav">
           <div class="navbar-nav">
-            <a class="nav-item nav-link">
+            <a class="nav-item nav-link" [routerLink]="['/login']">
               <i class="material-icons align">keyboard_tab</i>
             </a>
-            <a class="nav-item nav-link">
+            <a class="nav-item nav-link" [routerLink]="['/signup']">
               <i class="material-icons align">subdirectory_arrow_left</i>
             </a>
           </div>
