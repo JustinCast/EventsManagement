@@ -5,6 +5,7 @@ const activity = require('./activity/activity');
 const event = require('./event/event');
 const instructor = require('./instructor/instructor');
 const reservation = require('./reservation/reservation');
+const grade = require('./grade/grade');
 const user = require('./user/user');
 module.exports.set = app => {
 
@@ -27,7 +28,20 @@ module.exports.set = app => {
    app.delete('/deleteEvent',event.deleteEvent);
    app.get('/createEvent',event.readEvent);
 
-   // Instructor
+   // Grade
+   app.post('/createGrade',grade.createGrade);
+   app.put('/updateGrade',grade.updateGrade);
+   app.delete('/deleteGrade',grade.deleteGrade);
+   app.get('/createGrade',grade.readGrade);
 
+   // Instructor
+   app.post('/createInstructor',instructor.createInstructor);
+   app.put('/updateInstructor',instructor.updateInstructor);
+   app.delete('/deleteInstructor',instructor.deleteInstructor);
+   app.get('/createInstructor',instructor.readInstructor);
    
+   // Reservation
+   app.post('/createReservation',reservation.createReservation);
+   app.delete('/deleteReservation',reservation.deleteReservation);
+   app.get('/createReservation',reservation.readReservation);
 }
