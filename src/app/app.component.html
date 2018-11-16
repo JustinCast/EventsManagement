@@ -1,5 +1,35 @@
 <mat-drawer-container class="example-container" hasBackdrop="true">
-  <mat-drawer #drawer mode="push"> </mat-drawer>
+  <mat-drawer #drawer mode="push">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel
+        [expanded]="step === 0"
+        (opened)="setStep(0)"
+        hideToggle
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            Add Activity
+            <mat-icon>account_box</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="drawer.close()"
+        >
+          Add
+        </button>
+        <button
+          class="ml-4"
+          mat-stroked-button
+          color="accent"
+          (click)="drawer.close()"
+        >
+          Show
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-drawer>
   <mat-drawer-content>
     <div class="bg-text">
       <nav id="main-nav" class="shadow navbar navbar-light mb-5">
