@@ -21,7 +21,7 @@ export class EventService {
   }
 
   getEvents() {
-    this._http.get<Array<Organization>>(`${environment.server}/getEvents`)
+    this._http.get<Array<Organization>>(`${environment.server}getEvents`)
     .subscribe(
       (events) => this.events = events,
       (err: HttpErrorResponse) => this.handleError(err)

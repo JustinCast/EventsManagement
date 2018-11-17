@@ -101,7 +101,7 @@ function deleteEvent(req, res) {
 
 };
 
-// Delete Event 
+// get Events
 function readEvent(req, res) {
     // Set Connect
     setConfigDefault();

@@ -18,6 +18,10 @@ export class ActivityService {
     );
   }
 
+  saveActivity() {
+    this.post
+  }
+
   handleError(err: HttpErrorResponse) {
     if (err.error instanceof Error) {
       // Error del lado del cliente

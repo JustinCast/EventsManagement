@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
+import { Organization } from '../models/Organization';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class InStorageService {
 
   getUser(): User {
     return JSON.parse(localStorage.getItem('logged'));
+  }
+
+  actualEvent(event: Organization) {
+    localStorage.setItem('actual', JSON.stringify(event));
   }
 }

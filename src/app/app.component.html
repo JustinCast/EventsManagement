@@ -1,6 +1,12 @@
 <mat-drawer-container class="example-container" hasBackdrop="true">
   <mat-drawer #drawer mode="push">
     <h3 class="text-info text-center">Admin dashboard</h3>
+    <hr>
+    <mat-form-field class="container">
+      <mat-select placeholder="Event">
+        <mat-option (click)="_in.actualEvent(_event.events[i])" *ngFor="let e of _event.events; let i = index">{{e.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <mat-accordion class="example-headers-align">
       <mat-expansion-panel
         [expanded]="step === 0"
