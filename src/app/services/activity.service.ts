@@ -19,7 +19,12 @@ export class ActivityService {
     );
   }
 
-  saveActivity() {
+  saveActivity(activity: Activity) {
+    this._http.post(`${environment.server}createActivity`, activity)
+    .subscribe(
+      () => this.ui.openSnackBar('Activity saved succesfully', 'Ok', 2000),
+      (err: HttpErrorResponse) => this.handleError(err)
+    )
   }
 
   handleError(err: HttpErrorResponse) {
