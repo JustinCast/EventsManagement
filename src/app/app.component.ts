@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { InStorageService } from './services/in-storage.service';
-import { EventService } from './services/event.service';
-import { ActivityService } from './services/activity.service';
+import { Component, OnInit } from "@angular/core";
+import { InStorageService } from "./services/in-storage.service";
+import { EventService } from "./services/event.service";
+import { ActivityService } from "./services/activity.service";
+import { DialogManagerService } from "./services/dialog-manager.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
   step = 0;
   actualDate: Date = new Date();
-  constructor(private _in: InStorageService, private _event: EventService, private _activity: ActivityService){
-    
-  }
+  constructor(
+    private _in: InStorageService,
+    private _event: EventService,
+    private _activity: ActivityService,
+    private _dialog: DialogManagerService
+  ) {}
 
   ngOnInit() {
     this._event.getEvents();
