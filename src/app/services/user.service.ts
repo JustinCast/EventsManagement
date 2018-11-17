@@ -20,13 +20,14 @@ export class UserService {
 
   login(user: User) {
     this._http
-      .post<number>(`${environment.server}loginUser`, {
+      .post<any>(`${environment.server}loginUser`, {
         dni: user.dni,
-        password: user.passport
+        password: user.password
       })
       .subscribe(
         id => {
-          user.id = id;
+          console.log(id);
+          user.id = id.id;
           this._in.login(user);
           this.ui.openSnackBar("Loggued succesfully", "Ok", 2000);
           this.router.navigate(['/home']);

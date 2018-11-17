@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginGroup = this._fb.group({
       dni: ["", Validators.required],
-      password: ["", Validators.required]
+      password: ['', Validators.required]
     });
   }
 

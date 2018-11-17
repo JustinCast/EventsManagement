@@ -25,12 +25,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   reservation(i: number) {
+    console.log(this._in.getUser());
     let body: Reservation = {
       id_activity: this.act.activities[i].id,
-      id_user: this._in.getUser().id, // FALTA,
+      id_user: this._in.getUser().id,
       confirmation: false
     };
-
+    console.log(body)
     this.res.saveReservation(body);
   }
 }

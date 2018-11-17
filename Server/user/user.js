@@ -70,7 +70,7 @@ function loginUser(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            
+            console.log(req.body)
             const query =`select id from _user where dni ='`+req.body.dni+`' and password = crypt('`+req.body.password+`',password);`;
             client.query(query)
             .then(data => {
