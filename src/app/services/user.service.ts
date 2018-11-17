@@ -50,7 +50,9 @@ export class UserService {
 
   getUsers() {}
 
-  saveUser() {}
+  saveUser(user: User) {
+    
+  }
 
   updateUser() {}
 }

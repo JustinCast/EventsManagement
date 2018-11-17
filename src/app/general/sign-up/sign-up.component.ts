@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-sign-up',
@@ -32,7 +33,21 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     this._user.saveUser(
-      
+      new User(
+        this.signupGroup.get('name').value,
+        this.signupGroup.get('lastname').value,
+        this.signupGroup.get('dni').value,
+        this.signupGroup.get('password').value,
+        this.signupGroup.get('gender').value,
+        this.signupGroup.get('country').value,
+        this.signupGroup.get('state').value,
+        this.signupGroup.get('phone').value,
+        this.signupGroup.get('passport').value,
+        this.signupGroup.get('email').value,
+        this.signupGroup.get('expectatives').value,
+        this.signupGroup.get('allergies').value,
+        this.signupGroup.get('emergencyContact').value,
+      )
     )
   }
 

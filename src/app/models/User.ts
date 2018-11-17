@@ -3,7 +3,7 @@ export class User {
     public name?: string,
     public lastname?: string,
     public password?: string,
-    public gender?: boolean,
+    public gender?: string,
     public country?: string,
     public state?: string,
     public phone?: string,

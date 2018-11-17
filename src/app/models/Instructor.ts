@@ -2,7 +2,7 @@ export class Instructor {
   constructor(
     public name?: string,
     public lastname?: string,
-    public gender?: boolean,
+    public gender?: string,
     public country?: string,
     public state?: string,
     public phone?: string,
