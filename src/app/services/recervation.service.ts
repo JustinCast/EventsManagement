@@ -6,11 +6,17 @@ import { environment } from "src/environments/environment";
 import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { UiService } from "./ui.service";
 import { Reservation } from "../models/Reservation";
+import { ActivityService } from "./activity.service";
 @Injectable({
   providedIn: "root"
 })
 export class ReservationService {
-  constructor(private _http: HttpClient, private ui: UiService) {}
+  reservationsByUser: Array<Reservation>;
+  constructor(
+    private _http: HttpClient,
+    private ui: UiService,
+    private _activity: ActivityService
+  ) {}
 
   saveReservation(reservation: Reservation) {
     this._http
@@ -20,6 +26,25 @@ export class ReservationService {
           this.ui.openSnackBar("Activity reserved successfully", "Ok", 2000),
         (err: HttpErrorResponse) => this.handleError(err)
       );
+  }
+
+  getReservationsByUser(user_id: number) {
+    this.reservationsByUser = [];
+    this._http
+      .get<Reservation[]>(
+        `${environment.server}getReservationsByUser/${user_id}`
+      )
+      .subscribe(
+        reservations => {this.reservationsByUser = reservations; this.getReservedActivities(this.reservationsByUser)},
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
+  }
+
+  getReservedActivities(reservations: Array<Reservation>) {
+    this._activity.reservedActivities = [];
+    reservations.forEach(r => {
+      this._activity.getActivity(r.id_activity);
+    });
   }
 
   handleError(err: HttpErrorResponse) {

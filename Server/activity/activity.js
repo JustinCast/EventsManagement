@@ -211,9 +211,37 @@ function readActivity(req, res) {
   });
 }
 
+function getActivity(req, res) {
+  // Set Connect
+  setConfigDefault();
+
+  var client = new pg.Client(config);
+  client.connect(err => {
+    if (err) {
+      client.end();
+      console.log(err.message);
+      res.status(400).json(err.message);
+    } else {
+      const query = `select * from activity WHERE id = ` + req.params.id_activity;
+      client
+        .query(query)
+        .then(data => {
+          res.status(200).json(data.rows[0]);
+          client.end();
+        })
+        .catch(err => {
+          console.log(err.message);
+          client.end();
+          res.status(400).json(err.message);
+        });
+    }
+  });
+}
+
 module.exports = {
   createActivity,
   updateActivity,
   deleteActivity,
-  readActivity
+  readActivity,
+  getActivity
 };

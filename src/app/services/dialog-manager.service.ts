@@ -33,7 +33,7 @@ export class DialogManagerService {
   openReservationsDialog(){
     this.dialog.open(ReservationsDialogComponent, {
       width: '50%',
-      height: '35%',
+      height: '80%',
       panelClass: 'dialog'
     })
   }

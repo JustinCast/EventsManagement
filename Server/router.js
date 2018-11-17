@@ -20,6 +20,7 @@ module.exports.set = app => {
    app.put('/updateActivity',activity.updateActivity);
    app.delete('/deleteActivity',activity.deleteActivity);
    app.get('/readActivity/:id_event',activity.readActivity);
+   app.get('/getActivity/:id_activity',activity.getActivity);
 
    // Event
 
@@ -44,4 +45,5 @@ module.exports.set = app => {
    app.post('/createReservation',reservation.createReservation);
    app.delete('/deleteReservation',reservation.deleteReservation);
    app.get('/getReservations',reservation.readReservation);
+   app.get('/getReservationsByUser/:user_id',reservation.readReservation);
 }

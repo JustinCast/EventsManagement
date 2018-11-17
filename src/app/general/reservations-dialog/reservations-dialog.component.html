@@ -1,3 +1,29 @@
-<p>
-  reservations-dialog works!
-</p>
+<ul *ngIf="_activity.reservedActivities.length !== 0; else progressbar " id="reserved-activities">
+  <li *ngFor="let r of _activity.reservedActivities; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="text-info">
+            {{r.name}}
+          </mat-panel-title>
+          <mat-panel-description class="text-secondary">
+            Reserved: {{_reservation.reservationsByUser[i].reservation_date | date}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list id="description" role="list">
+          <mat-list-item role="listitem">Duration: {{r.duration}}</mat-list-item>
+          <hr>
+          <mat-list-item role="listitem">Date: {{r.activity_date | date}}</mat-list-item>
+          <hr>
+          <mat-list-item role="listitem">Saloon: {{r.saloon}}</mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </li>
+</ul>
+<ng-template #progressbar>
+  <div id="loading" class="container">
+    <h2 class="text-center text-primary">Loading</h2>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</ng-template>

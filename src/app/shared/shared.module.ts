@@ -13,7 +13,8 @@ import {
   MatNativeDateModule,
   MatSnackBarModule,
   MatProgressBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatListModule
  } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from "ngx-pagination";
@@ -35,7 +36,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     MatSnackBarModule,
     MatProgressBarModule,
     NgxPaginationModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule
   ],
   exports: [
     MatInputModule,
@@ -53,7 +55,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     MatSnackBarModule,
     MatProgressBarModule,
     NgxPaginationModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule
   ],
   declarations: []
 })

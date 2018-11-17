@@ -9,12 +9,21 @@ import { InStorageService } from './in-storage.service';
 })
 export class ActivityService {
   activities: Array<Activity> = [];
+  reservedActivities: Array<Activity> = [];
   constructor(public _http: HttpClient,private ui: UiService, private _in: InStorageService) { }
 
   getActivities() {
     this._http.get<Array<Activity>>(`${environment.server}readActivity/${this._in.getActualEvent().id}`)
     .subscribe(
       (activities) => {this.activities = activities; console.log(this.activities)},
+      (err: HttpErrorResponse) => this.handleError(err)
+    );
+  }
+
+  getActivity(activity_id: number) {
+    this._http.get<Activity>(`${environment.server}getActivity/${activity_id}`)
+    .subscribe(
+      (a) => {this.reservedActivities.push(a);},
       (err: HttpErrorResponse) => this.handleError(err)
     );
   }
