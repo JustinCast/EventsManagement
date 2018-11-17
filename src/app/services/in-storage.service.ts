@@ -28,4 +28,8 @@ export class InStorageService {
   actualEvent(event: Organization) {
     localStorage.setItem('actual', JSON.stringify(event));
   }
+
+  getActualEvent(): Organization{
+    return JSON.parse(localStorage.getItem('actual'));
+  }
 }

@@ -10,12 +10,15 @@ import { InStorageService } from "src/app/services/in-storage.service";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
+  load: boolean = true;
   constructor(
     public act: ActivityService,
     public res: ReservationService,
     private _in: InStorageService
   ) {
-    this.act.getActivities();
+    if(!_in.getActualEvent() !== null)
+      this.act.getActivities();
+    else this.load = false;
   }
 
   ngOnInit() {}

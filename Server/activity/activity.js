@@ -195,7 +195,7 @@ function readActivity(req, res) {
       console.log(err.message);
       res.status(400).json(err.message);
     } else {
-      const query = `select * from activity`;
+      const query = `select * from activity WHERE id_event = ` + req.params.id_event;
       client
         .query(query)
         .then(data => {

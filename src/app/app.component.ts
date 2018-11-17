@@ -9,7 +9,7 @@ import { EventService } from './services/event.service';
 })
 export class AppComponent implements OnInit {
   step = 0;
-
+  actualDate: Date = new Date();
   constructor(private _in: InStorageService, private _event: EventService){
     console.log(_in.getUser());
   }

@@ -1,10 +1,14 @@
 <mat-drawer-container class="example-container" hasBackdrop="true">
   <mat-drawer #drawer mode="push">
-    <h3 class="text-info text-center">Admin dashboard</h3>
-    <hr>
+    <h3 class="text-info text-center">EventIn dashboard</h3>
+    <hr />
     <mat-form-field class="container">
       <mat-select placeholder="Event">
-        <mat-option (click)="_in.actualEvent(_event.events[i])" *ngFor="let e of _event.events; let i = index">{{e.name}}</mat-option>
+        <mat-option
+          (click)="_in.actualEvent(_event.events[i])"
+          *ngFor="let e of _event.events; let i = index"
+          >{{ e.name }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
     <mat-accordion class="example-headers-align">
@@ -103,18 +107,24 @@
         </button>
       </mat-expansion-panel>
     </mat-accordion>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">	&copy; CoffeeCode Group | <span class="text-info">{{actualDate | date}}</span></span>
+      </div>
+    </footer>
   </mat-drawer>
   <mat-drawer-content>
     <div class="bg-text">
       <nav id="main-nav" class="shadow navbar navbar-light mb-5">
-        <a *ngIf="_in.isLoggedIn()"
+        <a
+          *ngIf="_in.isLoggedIn()"
           style="cursor: pointer"
           class="navbar-brand text-white"
           (click)="drawer.toggle()"
           ><mat-icon>menu</mat-icon></a
         >
-        <a id="logo" class="navbar-brand pull-left text-center" href="/">
-          Adearis
+        <a *ngIf="_in.getActualEvent() !== null" id="logo" class="navbar-brand pull-left text-center" href="/">
+          {{_in.getActualEvent().name}}
         </a>
         <div class="navbar-expand mr-auto">
           <div class="navbar-nav">
@@ -127,15 +137,29 @@
             >
           </div>
         </div>
+        <h1 class="text-center">EventIn <mat-icon class="ml-1">bookmarks</mat-icon></h1>
         <div class="navbar-expand ml-auto navbar-nav">
           <div class="navbar-nav">
-            <a *ngIf="!_in.isLoggedIn()" class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/login']">
+            <a
+              *ngIf="!_in.isLoggedIn()"
+              class="nav-item nav-link"
+              routerLinkActive="active-link"
+              [routerLink]="['/login']"
+            >
               Login
             </a>
-            <a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/signup']">
+            <a
+              class="nav-item nav-link"
+              routerLinkActive="active-link"
+              [routerLink]="['/signup']"
+            >
               SignUP
             </a>
-            <a *ngIf="_in.isLoggedIn()" class="nav-item nav-link" (click)="_in.logout()">
+            <a
+              *ngIf="_in.isLoggedIn()"
+              class="nav-item nav-link"
+              (click)="_in.logout()"
+            >
               Logout
             </a>
           </div>
