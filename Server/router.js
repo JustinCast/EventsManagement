@@ -23,7 +23,7 @@ module.exports.set = app => {
 
    // Event
 
-   app.post('/createEvent',event.createEvent);
+   app.post('/saveEvent',event.createEvent);
    app.put('/updateEvent',event.updateEvent);
    app.delete('/deleteEvent',event.deleteEvent);
    app.get('/getEvents',event.readEvent);

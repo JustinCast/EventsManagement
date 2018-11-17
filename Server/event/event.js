@@ -24,7 +24,7 @@ function createEvent(req, res) {
         else {
             const query = `insert into event(name,country,phone,website,email,description,year,start_date,finish_date)
              values ('`+req.body.name+`','`+req.body.country+`','`+req.body.phone+`','`+req.body.website+`','`+req.body.email+`',
-             '`+req.body.description+`','`+req.body.start_date+`','`+req.body.finish_date+`')`;
+             '`+req.body.description+`','`+req.body.year+`','`+req.body.start_date+`','`+req.body.finish_date+`')`;
             client
             .query(query)
             .then(data => {

@@ -8,7 +8,8 @@ import { Organization } from "../../../models/Organization";
   styleUrls: ["./add-event.component.scss"]
 })
 export class AddEventComponent implements OnInit {
-  eventGroup: FormGroup
+  eventGroup: FormGroup;
+  year: number;
   constructor(private _fb: FormBuilder, private eventService: EventService) {
     this.eventGroup = this._fb.group({
       'name': ['', Validators.required],
@@ -34,7 +35,7 @@ export class AddEventComponent implements OnInit {
         this.eventGroup.get('website').value,
         this.eventGroup.get('email').value,
         this.eventGroup.get('description').value,
-        this.eventGroup.get('year').value,
+        this.year,
         this.eventGroup.get('startDate').value,
         this.eventGroup.get('finishDate').value,
       )
@@ -42,7 +43,9 @@ export class AddEventComponent implements OnInit {
   }
   
   
-  
+  date(event){
+    this.year = (<Date> event).getFullYear();
+  }
   allcountries: Array<string> = [
     "Afghanistan",
     "Albania",

@@ -16,7 +16,7 @@ export class EventService {
     this._http
       .post(`${environment.server}saveEvent`, event)
       .subscribe(
-        () => this.ui.openSnackBar("Evento guardado con éxito", "Ok", 2000),
+        () => this.ui.openSnackBar("Event saved successfully", "Ok", 2000),
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
