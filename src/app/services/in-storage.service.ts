@@ -13,7 +13,7 @@ export class InStorageService {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('logged') !== undefined;
+    return localStorage.getItem('logged') !== null;
   }
 
   logout() {

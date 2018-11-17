@@ -101,7 +101,7 @@
   <mat-drawer-content>
     <div class="bg-text">
       <nav id="main-nav" class="shadow navbar navbar-light mb-5">
-        <a
+        <a *ngIf="_in.isLoggedIn()"
           style="cursor: pointer"
           class="navbar-brand text-white"
           (click)="drawer.toggle()"
@@ -123,14 +123,14 @@
         </div>
         <div class="navbar-expand ml-auto navbar-nav">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" [routerLink]="['/login']">
-              <i class="material-icons align">keyboard_tab</i>
+            <a *ngIf="!_in.isLoggedIn()" class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/login']">
+              Login
             </a>
-            <a class="nav-item nav-link" [routerLink]="['/signup']">
+            <a class="nav-item nav-link" routerLinkActive="active-link" [routerLink]="['/signup']">
               SignUP
             </a>
-            <a class="nav-item nav-link">
-              <i class="material-icons align">subdirectory_arrow_left</i>
+            <a *ngIf="_in.isLoggedIn()" class="nav-item nav-link" (click)="_in.logout()">
+              Logout
             </a>
           </div>
         </div>

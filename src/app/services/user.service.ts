@@ -5,12 +5,18 @@ import { environment } from "src/environments/environment";
 import { UiService } from "./ui.service";
 import { InStorageService } from "./in-storage.service";
 import { Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class UserService {
-  constructor(private _http: HttpClient, private ui: UiService, private _in: InStorageService) {}
+  constructor(
+    private _http: HttpClient,
+    private ui: UiService,
+    private _in: InStorageService,
+    private router: Router
+  ) {}
 
   login(user: User) {
     this._http
@@ -23,6 +29,7 @@ export class UserService {
           user.id = id;
           this._in.login(user);
           this.ui.openSnackBar("Loggued succesfully", "Ok", 2000);
+          this.router.navigate(['/home']);
         },
         (err: HttpErrorResponse) => this.handleError(err)
       );
@@ -31,7 +38,7 @@ export class UserService {
   getUsers() {}
 
   saveUser(user: User): Observable<any> {
-    return this._http.post(`${environment.server}registerUser`, user)
+    return this._http.post(`${environment.server}registerUser`, user);
   }
 
   updateUser() {}

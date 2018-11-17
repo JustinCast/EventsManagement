@@ -32,7 +32,7 @@ export class SignUpComponent implements OnInit {
       expectatives: ["", Validators.required],
       allergies: ["", Validators.required],
       emergencyContact: ["", Validators.required],
-      dni: ["", Validators.required],
+      dni: ["", Validators.required]
     });
   }
 
@@ -54,13 +54,13 @@ export class SignUpComponent implements OnInit {
           this.signupGroup.get("expectatives").value,
           this.signupGroup.get("allergies").value,
           this.signupGroup.get("emergencyContact").value,
-          this.signupGroup.get("dni").value,
+          this.signupGroup.get("dni").value
         )
       )
       .subscribe(
         () => {
           this.ui.openSnackBar("User saved successfully", "Ok", 2000);
-          this.router.navigate(['/login'])
+          this.router.navigate(["/login"]);
         },
         (err: HttpErrorResponse) => this._user.handleError(err)
       );
