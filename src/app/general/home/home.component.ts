@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     public res: ReservationService,
     private _in: InStorageService
   ) {
+    this.act.activities = [];
     if(!_in.getActualEvent() !== null)
       this.act.getActivities();
     else this.load = false;

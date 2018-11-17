@@ -32,4 +32,8 @@ export class InStorageService {
   getActualEvent(): Organization{
     return JSON.parse(localStorage.getItem('actual'));
   }
+
+  removeActualEvent() {
+    localStorage.removeItem('actual');
+  }
 }

@@ -5,7 +5,7 @@
     <mat-form-field class="container">
       <mat-select placeholder="Event">
         <mat-option
-          (click)="_in.actualEvent(_event.events[i])"
+          (click)="selectActual(i)"
           *ngFor="let e of _event.events; let i = index"
           >{{ e.name }}</mat-option
         >

@@ -1,6 +1,6 @@
 <div class="container" *ngIf="load; else selectEvent">
-  <div *ngIf="act.activities.length != 0; else: progressbar">
-    <div class="row">
+  <div *ngIf="act.activities !== undefined; else: progressbar">
+    <div class="row" *ngIf="act.activities.length !== 0; else addSome">
       <div class="col-sm" *ngFor="let act of act.activities; let i = index">
         <mat-card class="example-card shadow">
           <mat-card-header>
@@ -64,5 +64,12 @@
 </div>
 
 <ng-template #selectEvent>
-    <h1 color="danger text-center">No Event Selected</h1>
+  <div class="container text-center">
+    <h1 class="text-danger">No Event Selected</h1>
+  </div>
+</ng-template>
+<ng-template #addSome>
+  <div class="container text-center">
+    <h1 class="text-danger">Add some activities</h1>
+  </div>
 </ng-template>
