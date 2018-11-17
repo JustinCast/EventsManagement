@@ -12,7 +12,7 @@ export class User {
     public expectatives?: string,
     public allergies?: string,
     public emergency_contact?: string,
+    public dni?: string,
     public id?: number,
-    public dni?: string
   ) {}
 }

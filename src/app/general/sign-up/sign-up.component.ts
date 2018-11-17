@@ -1,54 +1,69 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/User';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { UserService } from "src/app/services/user.service";
+import { User } from "src/app/models/User";
+import { HttpErrorResponse } from "@angular/common/http";
+import { UiService } from "src/app/services/ui.service";
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  selector: "app-sign-up",
+  templateUrl: "./sign-up.component.html",
+  styleUrls: ["./sign-up.component.scss"]
 })
 export class SignUpComponent implements OnInit {
   signupGroup: FormGroup;
-  constructor(private _fb: FormBuilder, private _user: UserService) { 
+  constructor(
+    private _fb: FormBuilder,
+    private router: Router,
+    private _user: UserService,
+    private ui: UiService
+  ) {
     this.signupGroup = this._fb.group({
-      'name': ['', Validators.required],
-      'lastname': ['', Validators.required],
-      'dni': ['', Validators.required],
-      'password': ['', Validators.required],
-      'gender': ['', Validators.required],
-      'country': ['', Validators.required],
-      'state': ['', Validators.required],
-      'phone': ['', Validators.required],
-      'passport': ['', Validators.required],
-      'email': ['', Validators.required],
-      'expectatives': ['', Validators.required],
-      'allergies': ['', Validators.required],
-      'emergencyContact': ['', Validators.required],
+      name: ["", Validators.required],
+      lastname: ["", Validators.required],
+      password: ["", Validators.required],
+      gender: ["", Validators.required],
+      country: ["", Validators.required],
+      state: ["", Validators.required],
+      phone: ["", Validators.required],
+      passport: ["", Validators.required],
+      email: ["", Validators.required],
+      expectatives: ["", Validators.required],
+      allergies: ["", Validators.required],
+      emergencyContact: ["", Validators.required],
+      dni: ["", Validators.required],
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit() {
-    this._user.saveUser(
-      new User(
-        this.signupGroup.get('name').value,
-        this.signupGroup.get('lastname').value,
-        this.signupGroup.get('dni').value,
-        this.signupGroup.get('password').value,
-        this.signupGroup.get('gender').value,
-        this.signupGroup.get('country').value,
-        this.signupGroup.get('state').value,
-        this.signupGroup.get('phone').value,
-        this.signupGroup.get('passport').value,
-        this.signupGroup.get('email').value,
-        this.signupGroup.get('expectatives').value,
-        this.signupGroup.get('allergies').value,
-        this.signupGroup.get('emergencyContact').value,
+    this._user
+      .saveUser(
+        new User(
+          this.signupGroup.get("name").value,
+          this.signupGroup.get("lastname").value,
+          this.signupGroup.get("password").value,
+          this.signupGroup.get("gender").value,
+          this.signupGroup.get("country").value,
+          this.signupGroup.get("state").value,
+          this.signupGroup.get("phone").value,
+          this.signupGroup.get("passport").value,
+          this.signupGroup.get("email").value,
+          this.signupGroup.get("expectatives").value,
+          this.signupGroup.get("allergies").value,
+          this.signupGroup.get("emergencyContact").value,
+          this.signupGroup.get("dni").value,
+        )
       )
-    )
+      .subscribe(
+        () => {
+          this.ui.openSnackBar("User saved successfully", "Ok", 2000);
+          this.router.navigate(['/login'])
+        },
+        (err: HttpErrorResponse) => this._user.handleError(err)
+      );
   }
 
   allcountries: Array<string> = [

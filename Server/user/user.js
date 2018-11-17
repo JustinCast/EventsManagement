@@ -16,6 +16,7 @@ function createUser(req, res) {
     setConfigDefault();
 
     var client = new pg.Client(config);
+    console.log(req.body);
     client.connect(err => {
         if (err){
             client.end();

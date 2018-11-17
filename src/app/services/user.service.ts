@@ -4,6 +4,7 @@ import { User } from "../models/User";
 import { environment } from "src/environments/environment";
 import { UiService } from "./ui.service";
 import { InStorageService } from "./in-storage.service";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -27,6 +28,14 @@ export class UserService {
       );
   }
 
+  getUsers() {}
+
+  saveUser(user: User): Observable<any> {
+    return this._http.post(`${environment.server}registerUser`, user)
+  }
+
+  updateUser() {}
+
   handleError(err: HttpErrorResponse) {
     if (err.error instanceof Error) {
       // Error del lado del cliente
@@ -47,12 +56,4 @@ export class UserService {
       );
     }
   }
-
-  getUsers() {}
-
-  saveUser(user: User) {
-    
-  }
-
-  updateUser() {}
 }
