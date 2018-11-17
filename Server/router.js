@@ -33,7 +33,7 @@ module.exports.set = app => {
    app.post('/createGrade',grade.createGrade);
    app.put('/updateGrade',grade.updateGrade);
    app.delete('/deleteGrade',grade.deleteGrade);
-   app.get('/getGrades',grade.readGrade);
+   app.get('/getGrades/:id_instructor',grade.readGrade);
 
    // Instructor
    app.post('/createInstructor',instructor.createInstructor);

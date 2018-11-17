@@ -111,7 +111,7 @@ function readGrade(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            const query = `select * from grade`;
+            const query = `select * from grade WHERE id_instructor = `+ req.params.id_instructor;
             client
             .query(query)
             .then(data => {

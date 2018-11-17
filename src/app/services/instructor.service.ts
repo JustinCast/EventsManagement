@@ -3,6 +3,7 @@ import { Instructor } from "../models/Instructor";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { UiService } from "./ui.service";
+import { Degree } from "../models/Degree";
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +15,7 @@ export class InstructorService {
 
   saveInstructor(instructor: Instructor) {
     this._http
-      .post(`${environment.server}/createInstructor`, instructor)
+      .post(`${environment.server}createInstructor`, instructor)
       .subscribe(
         () => {this.ui.openSnackBar("Instructor guardado con éxito", "Ok", 2000); this.loading = false},
         (err: HttpErrorResponse) => this.handleError(err)
@@ -23,7 +24,7 @@ export class InstructorService {
 
   getInstructors() {
     this._http
-      .get<Array<Instructor>>(`${environment.server}/getInstructors`)
+      .get<Array<Instructor>>(`${environment.server}getInstructors`)
       .subscribe(
         instructors => {(this.instructors = instructors); this.loading = false;},
         (err: HttpErrorResponse) => this.handleError(err)
@@ -32,12 +33,25 @@ export class InstructorService {
 
   updateInstructor(instructor: Instructor) {
     this._http
-      .put(`${environment.server}/updateInstructor`, instructor)
+      .put(`${environment.server}updateInstructor`, instructor)
       .subscribe(
         () =>
           {this.ui.openSnackBar("Instructor actualizado con éxito", "Ok", 2000); this.loading = false},
         (err: HttpErrorResponse) => this.handleError(err)
       );
+  }
+
+  saveGrade(degree: Degree) {
+    this._http.post(`${environment.server}createGrade`, degree)
+    .subscribe(
+      () =>
+        {this.ui.openSnackBar("Grade saved succesfully", "Ok", 2000); },
+      (err: HttpErrorResponse) => this.handleError(err)
+    );
+  }
+
+  getGrades(id_instructor: number) {
+    
   }
 
   handleError(err: HttpErrorResponse) {

@@ -2,7 +2,7 @@
   <ul
     id="instructors-container"
     class="container"
-    *ngIf="_instructor.loading; else: progressbar"
+    *ngIf="!_instructor.loading; else: progressbar"
   >
     <li
       class="instructor"

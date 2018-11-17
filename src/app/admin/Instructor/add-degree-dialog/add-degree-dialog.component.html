@@ -1,3 +1,11 @@
-<p>
-  add-degree-dialog works!
-</p>
+<form [formGroup]="degreeGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput [formControl]="degreeGroup.get('degree')" type="text" placeholder="Degree name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="degreeGroup.get('institution')" type="text" placeholder="Institution">
+  </mat-form-field>
+  <div class="container text-center">
+    <button type="submit" [disabled]="!degreeGroup.valid" mat-stroked-button><mat-icon>done</mat-icon></button>
+  </div>
+</form>
