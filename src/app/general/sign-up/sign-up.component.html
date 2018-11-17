@@ -20,7 +20,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-select [formControl]="signupGroup.get('country')">
-      <mat-option *ngFor="let c of allcountries" value="c">{{c}}</mat-option>
+      <mat-option *ngFor="let c of allcountries" [value]="c">{{c}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>

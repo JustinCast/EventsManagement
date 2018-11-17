@@ -17,7 +17,7 @@ function createUser(req, res) {
 
     var client = new pg.Client(config);
     console.log(req.body);
-    client.connect(err => {
+    client.connect(err => { 
         if (err){
             client.end();
             console.log(err.message);
