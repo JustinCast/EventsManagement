@@ -12,6 +12,7 @@ import { EditEventDialogComponent } from './Event/edit-event-dialog/edit-event-d
 import { AddInstructorComponent } from './Instructor/add-instructor/add-instructor.component';
 import { ShowInstructorsComponent } from './Instructor/show-instructors/show-instructors.component';
 import { AddDegreeDialogComponent } from "./Instructor/add-degree-dialog/add-degree-dialog.component";
+import { ReminderComponent } from './reminder/reminder.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddDegreeDialogComponent } from "./Instructor/add-degree-dialog/add-deg
     EditEventDialogComponent,
     AddInstructorComponent,
     ShowInstructorsComponent,
-    AddDegreeDialogComponent
+    AddDegreeDialogComponent,
+    ReminderComponent
   ],
   entryComponents: [
     EditEventDialogComponent,

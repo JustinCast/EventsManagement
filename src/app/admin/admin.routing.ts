@@ -8,6 +8,7 @@ import { AddEventComponent } from "./Event/add-event/add-event.component";
 import { ShowEventsComponent } from "./Event/show-events/show-events.component";
 import { AddInstructorComponent } from "./Instructor/add-instructor/add-instructor.component";
 import { ShowInstructorsComponent } from "./Instructor/show-instructors/show-instructors.component";
+import { ReminderComponent } from "./reminder/reminder.component";
 
 const ROUTES: Routes = [
   {
@@ -20,6 +21,7 @@ const ROUTES: Routes = [
       { path: "show-activities", component: ShowActivitiesComponent },
       { path: "add-instructor", component: AddInstructorComponent },
       { path: "show-instructors", component: ShowInstructorsComponent },
+      { path: "reminder", component: ReminderComponent }
     ]
   }
 ];
