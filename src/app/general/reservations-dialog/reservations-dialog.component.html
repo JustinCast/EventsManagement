@@ -16,6 +16,9 @@
           <mat-list-item role="listitem">Date: {{r.activity_date | date}}</mat-list-item>
           <hr>
           <mat-list-item role="listitem">Saloon: {{r.saloon}}</mat-list-item>
+          <hr>
+          <button mat-raised-button color="warn" (click)="delete(i)">Delete</button>
+
         </mat-list>
       </mat-expansion-panel>
     </mat-accordion>

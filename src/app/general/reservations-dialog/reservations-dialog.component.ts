@@ -8,6 +8,7 @@ import { InStorageService } from "src/app/services/in-storage.service";
   templateUrl: "./reservations-dialog.component.html",
   styleUrls: ["./reservations-dialog.component.scss"]
 })
+
 export class ReservationsDialogComponent implements OnInit {
   step = 0;
   constructor(
@@ -17,10 +18,21 @@ export class ReservationsDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this._activity.reservedActivities = [];
+    console.log(this._in.getUser().id);
     this._reservation.getReservationsByUser(this._in.getUser().id);
   }
 
   setStep(index: number) {
     this.step = index;
+  }
+
+  delete(i: number){
+
+    let body = {
+      id_activity: this._activity.reservedActivities[i].id,
+      id_user: this._in.getUser().id
+    }
+    this._activity.deleteReservationActivity(body,i);
   }
 }

@@ -43,7 +43,7 @@ module.exports.set = app => {
    
    // Reservation
    app.post('/createReservation',reservation.createReservation);
-   app.delete('/deleteReservation',reservation.deleteReservation);
+   app.post('/deleteReservation',reservation.deleteReservation);
    app.get('/getReservations',reservation.readReservation);
-   app.get('/getReservationsByUser/:user_id',reservation.readReservation);
+   app.get('/getReservationsByUser/:id',reservation.getReservationsByUser);
 }

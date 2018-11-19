@@ -28,6 +28,8 @@ export class ReservationService {
       );
   }
 
+  
+
   getReservationsByUser(user_id: number) {
     this.reservationsByUser = [];
     this._http
@@ -35,7 +37,7 @@ export class ReservationService {
         `${environment.server}getReservationsByUser/${user_id}`
       )
       .subscribe(
-        reservations => {this.reservationsByUser = reservations; this.getReservedActivities(this.reservationsByUser)},
+        reservations => {this.reservationsByUser = reservations;this.getReservedActivities(this.reservationsByUser)},
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
