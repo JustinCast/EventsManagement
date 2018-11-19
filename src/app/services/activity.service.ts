@@ -53,14 +53,26 @@ export class ActivityService {
   deleteActivity(index: number) {
     this._http
       .delete(
-        `${environment.server}deleteActivity/${
-          this.activities[index].id
-        }`
+        `${environment.server}deleteActivity/${this.activities[index].id}`
       )
       .subscribe(
         () => {
           this.ui.openSnackBar("Activity deleted succesfully", "Ok", 2000);
           this.activities.splice(index, 1);
+        },
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
+  }
+
+  updateActivity(updatedActivity: Activity) {
+    this._http
+      .put(`${environment.server}deleteActivity`, updatedActivity)
+      .subscribe(
+        () => {
+          this.ui.openSnackBar("Activity updated successfully", "Ok", 2000);
+          this.activities[
+            this.activities.findIndex(a => a.id === updatedActivity.id)
+          ] = updatedActivity;
         },
         (err: HttpErrorResponse) => this.handleError(err)
       );
