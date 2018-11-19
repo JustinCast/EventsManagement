@@ -19,7 +19,7 @@ export class ShowActivitiesComponent implements OnInit {
   openEditActivity(index: number) {
     this._dialog.openEditActivity(this._activity.activities[index])
     .subscribe(
-      update => console.log(update)
+      update => {if(update) this._activity.updateActivity(update)} 
     );
   }
 

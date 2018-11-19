@@ -66,7 +66,7 @@ export class ActivityService {
 
   updateActivity(updatedActivity: Activity) {
     this._http
-      .put(`${environment.server}deleteActivity`, updatedActivity)
+      .put(`${environment.server}updateActivity`, updatedActivity)
       .subscribe(
         () => {
           this.ui.openSnackBar("Activity updated successfully", "Ok", 2000);
