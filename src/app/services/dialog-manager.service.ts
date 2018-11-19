@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { EditEventDialogComponent } from '../admin/Event/edit-event-dialog/edit-event-dialog.component';
+import { EditEventDialogComponent } from '../admin/event/edit-event-dialog/edit-event-dialog.component';
 import { Organization } from '../models/Organization';
-import { AddDegreeDialogComponent } from '../admin/Instructor/add-degree-dialog/add-degree-dialog.component';
+import { AddDegreeDialogComponent } from '../admin/instructor/add-degree-dialog/add-degree-dialog.component';
 import { Degree } from '../models/Degree';
 import { Observable } from 'rxjs';
 import { ReservationsDialogComponent } from '../general/reservations-dialog/reservations-dialog.component';
-import { EditActivityDialogComponent } from '../admin/Activity/edit-activity-dialog/edit-activity-dialog.component';
+import { EditActivityDialogComponent } from '../admin/activity/edit-activity-dialog/edit-activity-dialog.component';
 import { Activity } from '../models/Activity';
 
 @Injectable({
@@ -40,7 +40,7 @@ export class DialogManagerService {
     })
   }
 
-  openEditActivity(activity: Activity): Observable<Activity> {
+  openEditActivity(activity: Activity): any {
     return this.dialog.open(EditActivityDialogComponent, {
       width: '50%',
       height: '80%',

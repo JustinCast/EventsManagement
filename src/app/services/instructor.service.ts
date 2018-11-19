@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Instructor } from "../models/Instructor";
+import { Instructor } from "../models/instructor";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { UiService } from "./ui.service";

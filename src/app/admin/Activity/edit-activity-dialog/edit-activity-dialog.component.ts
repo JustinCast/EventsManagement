@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { Activity } from "src/app/models/Activity";
+import { Activity } from "../../../models/Activity";
 
 @Component({
   selector: "app-edit-activity-dialog",
