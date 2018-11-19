@@ -13,6 +13,7 @@ import { AddInstructorComponent } from './Instructor/add-instructor/add-instruct
 import { ShowInstructorsComponent } from './Instructor/show-instructors/show-instructors.component';
 import { AddDegreeDialogComponent } from "./Instructor/add-degree-dialog/add-degree-dialog.component";
 import { ReminderComponent } from './reminder/reminder.component';
+import { EditActivityDialogComponent } from './activity/edit-activity-dialog/edit-activity-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ReminderComponent } from './reminder/reminder.component';
     AddInstructorComponent,
     ShowInstructorsComponent,
     AddDegreeDialogComponent,
-    ReminderComponent
+    ReminderComponent,
+    EditActivityDialogComponent
   ],
   entryComponents: [
     EditEventDialogComponent,

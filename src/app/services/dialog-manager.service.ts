@@ -6,6 +6,8 @@ import { AddDegreeDialogComponent } from '../admin/Instructor/add-degree-dialog/
 import { Degree } from '../models/Degree';
 import { Observable } from 'rxjs';
 import { ReservationsDialogComponent } from '../general/reservations-dialog/reservations-dialog.component';
+import { EditActivityDialogComponent } from '../admin/Activity/edit-activity-dialog/edit-activity-dialog.component';
+import { Activity } from '../models/Activity';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +38,14 @@ export class DialogManagerService {
       height: '80%',
       panelClass: 'dialog'
     })
+  }
+
+  openEditActivity(activity: Activity): Observable<Activity> {
+    return this.dialog.open(EditActivityDialogComponent, {
+      width: '50%',
+      height: '80%',
+      panelClass: 'dialog',
+      data: activity
+    }).afterClosed();
   }
 }
