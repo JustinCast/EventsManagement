@@ -10,10 +10,11 @@ export class ReminderComponent implements OnInit {
   emailGroup: FormGroup;
   constructor(private _fb: FormBuilder) {
     this.emailGroup = this._fb.group({
-      'to_name': ['', Validators.required],
-      'from_name': ['CoffeCode Group Corp', Validators.required],
-      'message_html': ['', Validators.required],
-    })
+      to_name: ["", Validators.required],
+      to_email: ["", Validators.required],
+      from_name: ["CoffeCode Group Corp", Validators.required],
+      message_html: ["", Validators.required]
+    });
   }
 
   ngOnInit() {
@@ -21,16 +22,17 @@ export class ReminderComponent implements OnInit {
   }
 
   sendEmail() {
-    let templateParams = {
-      name: this.emailGroup.get('to_name').value,
-      message_html: this.emailGroup.get('message_html').value,
-      from_name: this.emailGroup.get('from_name').value
-  };
     emailjs
       .send(
         "gmail",
         "template_weEmF6VN",
-        {name: "James", notes: "Check this out!"},
+        {
+          name: "Participation reminder",
+          from_name: this.emailGroup.get("from_name").value,
+          to_email: this.emailGroup.get("to_email").value,
+          message: this.emailGroup.get("message_html").value,
+          to: this.emailGroup.get("to_name").value
+        },
         "user_RjLHFaNOVjh9MHP1hlwz9"
       )
       .then(

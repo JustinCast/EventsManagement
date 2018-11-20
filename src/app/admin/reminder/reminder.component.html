@@ -3,6 +3,9 @@
     <input matInput id="to_name" [formControl]="emailGroup.get('to_name')" type="text" placeholder="To">
   </mat-form-field>
   <mat-form-field>
+    <input matInput [formControl]="emailGroup.get('to_email')" type="email" placeholder="To email">
+  </mat-form-field>
+  <mat-form-field>
     <input matInput id="from_name" [formControl]="emailGroup.get('from_name')" type="text" placeholder="From">
   </mat-form-field>
   <mat-form-field>
