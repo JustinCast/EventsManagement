@@ -11,18 +11,18 @@ export class ReminderComponent implements OnInit {
   constructor(private _fb: FormBuilder) {
     this.emailGroup = this._fb.group({
       'to_name': ['', Validators.required],
-      'from_name': ['', Validators.required],
+      'from_name': ['CoffeCode Group Corp', Validators.required],
       'message_html': ['', Validators.required],
     })
   }
 
   ngOnInit() {
-    emailjs.init("user_RjLHFaNOVjh9MHP1hlwz9");
+    //emailjs.init("user_RjLHFaNOVjh9MHP1hlwz9");
   }
 
   sendEmail() {
     let templateParams = {
-      to_name: this.emailGroup.get('to_name').value,
+      name: this.emailGroup.get('to_name').value,
       message_html: this.emailGroup.get('message_html').value,
       from_name: this.emailGroup.get('from_name').value
   };
@@ -30,7 +30,7 @@ export class ReminderComponent implements OnInit {
       .send(
         "gmail",
         "template_weEmF6VN",
-        JSON.stringify(templateParams),
+        {name: "James", notes: "Check this out!"},
         "user_RjLHFaNOVjh9MHP1hlwz9"
       )
       .then(

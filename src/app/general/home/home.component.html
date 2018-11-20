@@ -1,4 +1,5 @@
 <div class="container" *ngIf="load; else selectEvent">
+  <qrcode [qrdata]="'Pablo'" [size]="256" [level]="'M'"></qrcode>
   <div *ngIf="act.activities !== undefined; else: progressbar">
     <div class="row" *ngIf="act.activities.length !== 0; else addSome">
       <div class="col-sm" *ngFor="let act of act.activities; let i = index">

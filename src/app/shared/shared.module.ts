@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { QRCodeModule } from 'angularx-qrcode';
 import { 
   MatInputModule,
   MatCardModule,
@@ -37,7 +38,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     MatProgressBarModule,
     NgxPaginationModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    QRCodeModule
   ],
   exports: [
     MatInputModule,
@@ -56,7 +58,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     MatProgressBarModule,
     NgxPaginationModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    QRCodeModule
   ],
   declarations: []
 })
