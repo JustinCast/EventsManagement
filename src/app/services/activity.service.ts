@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { Activity } from "../models/Activity";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { UiService } from "./ui.service";
-import { InStorageService } from "./in-storage.service";
+import { UiService } from './ui.service';
+import { InStorageService } from './in-storage.service';
 @Injectable({
   providedIn: "root"
 })
@@ -38,6 +38,19 @@ export class ActivityService {
           this.reservedActivities.push(a);
         },
         (err: HttpErrorResponse) => this.handleError(err)
+      );
+  }
+
+  deleteReservationActivity(reservation: any,i: number) {
+    console.log(reservation);
+    this._http
+      .post(`${environment.server}deleteReservation`, reservation)
+      .subscribe( 
+        () => {
+          this.reservedActivities.splice(i, 1);
+          this.ui.openSnackBar("Activity Deleted successfully", "Ok", 2000),
+          (err: HttpErrorResponse) => this.handleError(err)
+        }  
       );
   }
 

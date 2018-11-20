@@ -52,7 +52,9 @@ function deleteReservation(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            const query = `delete from reservation where id = '`+req.body.id+`')`;
+            console.log(req.body.id_activity);
+            console.log(req.body.id_user);
+            const query = `delete from reservation where id_activity = `+req.body.id_activity+` and id_user = `+req.body.id_user;
             client
             .query(query)
             .then(data => {
@@ -109,7 +111,7 @@ function getReservationsByUser(req, res) {
             res.status(400).json(err.message);
             }
         else {
-            const query = `select * from reservation WHERE id_user = ` + req.params.user_id;
+            const query = `select * from reservation WHERE id_user = ` + req.params.id;
             client
             .query(query)
             .then(data => {
