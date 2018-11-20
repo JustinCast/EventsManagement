@@ -11,15 +11,12 @@ import { Degree } from "../models/Degree";
 export class InstructorService {
   instructors: Array<Instructor> = [];
   loading: boolean = false;
-  constructor(private _http: HttpClient, private ui: UiService) {}
+  actualInstructorID: number;
+  constructor(private _http: HttpClient, public ui: UiService) {}
 
   saveInstructor(instructor: Instructor) {
-    this._http
-      .post(`${environment.server}createInstructor`, instructor)
-      .subscribe(
-        () => {this.ui.openSnackBar("Instructor guardado con éxito", "Ok", 2000); this.loading = false},
-        (err: HttpErrorResponse) => this.handleError(err)
-      );
+    return this._http
+      .post<number>(`${environment.server}createInstructor`, instructor);
   }
 
   getInstructors() {

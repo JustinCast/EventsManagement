@@ -11,13 +11,13 @@
   </mat-form-field>
   <mat-form-field>
     <mat-select placeholder="Gender" [formControl]="instructorGroup.get('gender')">
-      <mat-option value="M">Male</mat-option>
-      <mat-option value="F">Female</mat-option>
+      <mat-option [value]="M">Male</mat-option>
+      <mat-option [value]="F">Female</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
     <mat-select placeholder="Country" [formControl]="instructorGroup.get('country')">
-      <mat-option *ngFor="let c of allcountries" value="c">{{c}}</mat-option>
+      <mat-option *ngFor="let c of allcountries" [value]="c">{{c}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
@@ -34,6 +34,11 @@
   </mat-form-field>
   <mat-form-field>
     <textarea matInput [formControl]="instructorGroup.get('description')" placeholder="Description"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [formControl]="instructorGroup.get('id_activity')" placeholder="Activity">
+      <mat-option *ngFor="let a of _activity.activities" [value]="a.id">{{a.name}}</mat-option>
+    </mat-select>
   </mat-form-field>
   <div class="container text-center">
     <h4 class="text-secondary">Add grades</h4>

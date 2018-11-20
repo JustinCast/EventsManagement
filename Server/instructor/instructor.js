@@ -25,9 +25,9 @@ function createInstructor(req, res) {
             var query;
             if(res.body.passport !== undefined){
                 query = `insert into instructor(dni,name,lastname,gender,country,state,phone,passport,
-                    mail,description) values ('`+req.body.dni+`','`+req.body.name+`','`+req.body.lastname+`','`+req.body.gender+`'
+                    mail,description, id_actividad) values ('`+req.body.dni+`','`+req.body.name+`','`+req.body.lastname+`','`+req.body.gender+`'
                     ,'`+req.body.country+`','`+req.body.state+`','`+req.body.phone+`','`+req.body.passport+`','`+req.body.mail+`'
-                    ,'`+req.body.description+`')`;
+                    ,'`+req.body.description+`','`+req.body.id_actividad`')`;
             }else{
                 query = `insert into instructor(dni,name,lastname,gender,country,state,phone,
                     mail,description) values ('`+req.body.dni+`','`+req.body.name+`','`+req.body.lastname+`','`+req.body.gender+`'
@@ -35,9 +35,10 @@ function createInstructor(req, res) {
             }
             client
             .query(query)
-            .then(data => {
-                res.status(200).json(
-                    true);
+            .then(() => {
+                query = "SELECT id FROM instructor WHERE dni = $1"
+                let result = client.query(query, [req.body.dni])
+                res.status(200).json(result.rows[0]);
                 client.end();
             })
             .catch(err => {

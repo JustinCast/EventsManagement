@@ -1,42 +1,83 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DialogManagerService } from 'src/app/services/dialog-manager.service';
-import { Degree } from 'src/app/models/Degree';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { DialogManagerService } from "src/app/services/dialog-manager.service";
+import { Degree } from "src/app/models/Degree";
+import { Instructor } from "src/app/models/instructor";
+import { InstructorService } from "src/app/services/instructor.service";
+import { HttpErrorResponse } from "@angular/common/http";
+import { ActivityService } from "src/app/services/activity.service";
 
 @Component({
-  selector: 'app-add-instructor',
-  templateUrl: './add-instructor.component.html',
-  styleUrls: ['./add-instructor.component.scss']
+  selector: "app-add-instructor",
+  templateUrl: "./add-instructor.component.html",
+  styleUrls: ["./add-instructor.component.scss"]
 })
 export class AddInstructorComponent implements OnInit {
   instructorGroup: FormGroup;
   degrees: Array<Degree> = [];
-  constructor(private _fb: FormBuilder, private _dialog: DialogManagerService) { 
+  constructor(
+    private _fb: FormBuilder,
+    private _dialog: DialogManagerService,
+    private _instructor: InstructorService,
+    private _activity: ActivityService
+  ) {
     this.instructorGroup = this._fb.group({
-      'name': ['', Validators.required],
-      'lastname': ['', Validators.required],
-      'dni': ['', Validators.required],
-      'gender': ['', Validators.required],
-      'country': ['', Validators.required],
-      'state': ['', Validators.required],
-      'phone': ['', Validators.required],
-      'passport': ['', Validators.required],
-      'mail': ['', Validators.required],
-      'description': ['', Validators.required],
-    })
+      name: ["", Validators.required],
+      lastname: ["", Validators.required],
+      dni: ["", Validators.required],
+      gender: ["", Validators.required],
+      country: ["", Validators.required],
+      state: ["", Validators.required],
+      phone: ["", Validators.required],
+      passport: ["", Validators.required],
+      mail: ["", Validators.required],
+      description: ["", Validators.required],
+      id_activity: ["", Validators.required]
+    });
   }
 
   ngOnInit() {
+    if(this._activity.activities.length === 0)
+      this._activity.getActivities();
   }
 
   openAddDegree() {
-    this._dialog.openAddDegreeDialog()
+    this._dialog.openAddDegreeDialog().subscribe(degree => {
+      if (degree) this.degrees.push(degree);
+    });
+  }
+
+value(val: any) {
+  console.log(val);
+}
+
+  onSubmit() {
+    let instructor: Instructor = new Instructor(
+      this.instructorGroup.get("name").value,
+      this.instructorGroup.get("lastname").value,
+      this.instructorGroup.get("dni").value,
+      this.instructorGroup.get("gender").value,
+      this.instructorGroup.get("country").value,
+      this.instructorGroup.get("state").value,
+      this.instructorGroup.get("phone").value,
+      this.instructorGroup.get("passport").value,
+      this.instructorGroup.get("mail").value,
+      this.instructorGroup.get("description").value,
+      this.instructorGroup.get("id_activity").value
+    );
+    console.log(this.instructorGroup.get('id_activity').value);
+    /*this._instructor.saveInstructor(instructor)
     .subscribe(
-      degree => {
-        if(degree)
-          this.degrees.push(degree);
-      } 
-    )
+      (id) => {
+        this._instructor.ui.openSnackBar("Instructor guardado con éxito", "Ok", 2000); 
+        this._instructor.loading = false;
+        this.degrees.forEach(d => {
+          d.id_instructor = id;
+          this._instructor.saveGrade(d);
+        });
+      },
+      (err: HttpErrorResponse) => this._instructor.handleError(err)
+    );*/
   }
   allcountries: Array<string> = [
     "Afghanistan",
