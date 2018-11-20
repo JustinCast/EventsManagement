@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA } from "@angular/material";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { Degree } from "src/app/models/Degree";
 
 @Component({
@@ -12,6 +12,7 @@ export class AddDegreeDialogComponent implements OnInit {
   degreeGroup: FormGroup;
   constructor(
     private _fb: FormBuilder,
+    public dialogRef: MatDialogRef<AddDegreeDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public id_instructor: number
   ) {
     this.degreeGroup = this._fb.group({
@@ -22,11 +23,15 @@ export class AddDegreeDialogComponent implements OnInit {
 
   ngOnInit() {}
 
-  submit() {
+  onSubmit() {
     let degree = new Degree(
       this.degreeGroup.get("name").value,
-      this.degreeGroup.get("institution").value,
-      this.id_instructor
+      this.degreeGroup.get("institution").value
     );
+    return this.dialogRef.close(degree);
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

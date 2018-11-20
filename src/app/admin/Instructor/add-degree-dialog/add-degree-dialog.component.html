@@ -1,11 +1,12 @@
-<form [formGroup]="degreeGroup" (ngSubmit)="onSubmit()">
+<form class="container text-center" [formGroup]="degreeGroup" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <input matInput [formControl]="degreeGroup.get('degree')" type="text" placeholder="Degree name">
+    <input matInput [formControl]="degreeGroup.get('name')" type="text" placeholder="Degree name">
   </mat-form-field>
   <mat-form-field>
     <input matInput [formControl]="degreeGroup.get('institution')" type="text" placeholder="Institution">
   </mat-form-field>
+  <hr>
   <div class="container text-center">
-    <button type="submit" [disabled]="!degreeGroup.valid" mat-stroked-button><mat-icon>done</mat-icon></button>
+    <button color="primary" type="submit" [disabled]="!degreeGroup.valid" mat-stroked-button><mat-icon>done</mat-icon></button>
   </div>
 </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as emailjs from "emailjs-com";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { UiService } from "src/app/services/ui.service";
 @Component({
   selector: "app-reminder",
   templateUrl: "./reminder.component.html",
@@ -8,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class ReminderComponent implements OnInit {
   emailGroup: FormGroup;
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private ui: UiService) {
     this.emailGroup = this._fb.group({
       to_name: ["", Validators.required],
       to_email: ["", Validators.required],
@@ -36,11 +37,11 @@ export class ReminderComponent implements OnInit {
         "user_RjLHFaNOVjh9MHP1hlwz9"
       )
       .then(
-        response => {
-          console.log("SUCCESS!", response.status, response.text);
+        (response) => {
+          this.ui.openSnackBar("Email was sent successfully", 'Ok', 2000);
         },
         err => {
-          console.log("FAILED...", err);
+          this.ui.openSnackBar(`Error: ${err}`, 'Ok', 2000);
         }
       );
   }

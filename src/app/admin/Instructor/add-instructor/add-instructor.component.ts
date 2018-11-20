@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DialogManagerService } from 'src/app/services/dialog-manager.service';
+import { Degree } from 'src/app/models/Degree';
 
 @Component({
   selector: 'app-add-instructor',
@@ -8,7 +10,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddInstructorComponent implements OnInit {
   instructorGroup: FormGroup;
-  constructor(private _fb: FormBuilder) { 
+  degrees: Array<Degree> = [];
+  constructor(private _fb: FormBuilder, private _dialog: DialogManagerService) { 
     this.instructorGroup = this._fb.group({
       'name': ['', Validators.required],
       'lastname': ['', Validators.required],
@@ -24,6 +27,16 @@ export class AddInstructorComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  openAddDegree() {
+    this._dialog.openAddDegreeDialog()
+    .subscribe(
+      degree => {
+        if(degree)
+          this.degrees.push(degree);
+      } 
+    )
   }
   allcountries: Array<string> = [
     "Afghanistan",

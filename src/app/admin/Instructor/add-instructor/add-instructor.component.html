@@ -10,13 +10,13 @@
     <input matInput [formControl]="instructorGroup.get('dni')" type="text" placeholder="DNI">
   </mat-form-field>
   <mat-form-field>
-    <mat-select [formControl]="instructorGroup.get('gender')">
+    <mat-select placeholder="Gender" [formControl]="instructorGroup.get('gender')">
       <mat-option value="M">Male</mat-option>
       <mat-option value="F">Female</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-select [formControl]="instructorGroup.get('country')">
+    <mat-select placeholder="Country" [formControl]="instructorGroup.get('country')">
       <mat-option *ngFor="let c of allcountries" value="c">{{c}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -37,8 +37,19 @@
   </mat-form-field>
   <div class="container text-center">
     <h4 class="text-secondary">Add grades</h4>
-    <button mat-raised-button id="add-btn"><mat-icon>add</mat-icon></button>
+    <button (click)="openAddDegree(); false" mat-raised-button id="add-btn"><mat-icon>add</mat-icon></button>
   </div>
+  <hr>
+  <br>
+  <mat-list role="list" *ngIf="degrees.length > 0">
+    <mat-list-item *ngFor="let d of degrees; let i = index" role="listitem">
+      <p class="text-info">{{d.name}}</p>
+      <div class="container text-right">
+        <button (click)="degrees.splice(i, 1)" mat-stroked-button color="warn"><mat-icon>delete</mat-icon></button>
+      </div>
+    </mat-list-item>
+    <hr>
+  </mat-list>
   <div class="container text-center p-4">
     <button type="submit" mat-stroked-button [disabled]="!instructorGroup.valid"><mat-icon>done</mat-icon></button>
   </div>
