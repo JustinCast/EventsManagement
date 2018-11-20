@@ -1,3 +1,20 @@
-<p>
-  show-activities works!
-</p>
+<ul id="activities" *ngIf="_activity.activities.length > 0" class="container text-center">
+  <li *ngFor="let a of _activity.activities; let i = index">
+    <mat-card>
+      <mat-card-title class="text-primary">{{a.name}}</mat-card-title>
+      <hr>
+      <mat-card-content>
+        <p><strong>Duration: </strong>{{a.duration}}</p>
+        <p><strong>Place: </strong>{{a.place}}</p>
+        <p><strong>Date: </strong>{{a.activity_date | date}}</p>
+        <p><strong>Saloon: </strong>{{a.saloon}}</p>
+        <p><strong>Entry: </strong>{{a.entry}}</p>
+        <p><strong>Requirements: </strong>{{a.requirements}}</p>
+      </mat-card-content>
+      <mat-card-actions class="container text-center">
+        <button (click)="openEditActivity(i)" mat-stroked-button color="primary"><mat-icon>edit</mat-icon></button>
+        <button (click)="deleteActivity(i)" mat-button color="warn"><mat-icon>delete</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>

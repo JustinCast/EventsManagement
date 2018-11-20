@@ -18,7 +18,7 @@ module.exports.set = app => {
 
    app.post('/createActivity',activity.createActivity);
    app.put('/updateActivity',activity.updateActivity);
-   app.delete('/deleteActivity',activity.deleteActivity);
+   app.delete('/deleteActivity/:id',activity.deleteActivity);
    app.get('/readActivity/:id_event',activity.readActivity);
    app.get('/getActivity/:id_activity',activity.getActivity);
 

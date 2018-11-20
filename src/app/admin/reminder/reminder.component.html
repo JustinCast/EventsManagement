@@ -1,3 +1,15 @@
-<p>
-  reminder works!
-</p>
+<form [formGroup]="emailGroup" class="container text-center shadow p-3" (ngSubmit)="sendEmail()">
+  <mat-form-field>
+    <input matInput id="to_name" [formControl]="emailGroup.get('to_name')" type="text" placeholder="To">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput id="from_name" [formControl]="emailGroup.get('from_name')" type="text" placeholder="From">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput id="message_html" [formControl]="emailGroup.get('message_html')" type="text" placeholder="Message"></textarea>
+  </mat-form-field>
+  <hr>
+  <div class="containet text-center mb-1">
+    <button type="submit" mat-stroked-button color="primary"><mat-icon>send</mat-icon></button>
+  </div>
+</form>

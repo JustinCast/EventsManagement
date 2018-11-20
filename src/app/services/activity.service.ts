@@ -1,32 +1,44 @@
-import { Injectable } from '@angular/core';
-import { Activity } from '../models/Activity';
+import { Injectable } from "@angular/core";
+import { Activity } from "../models/Activity";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { UiService } from './ui.service';
 import { InStorageService } from './in-storage.service';
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ActivityService {
   activities: Array<Activity> = [];
   reservedActivities: Array<Activity> = [];
-  constructor(public _http: HttpClient,private ui: UiService, private _in: InStorageService) { }
+  constructor(
+    public _http: HttpClient,
+    private ui: UiService,
+    private _in: InStorageService
+  ) {}
 
   getActivities() {
-    this._http.get<Array<Activity>>(`${environment.server}readActivity/${this._in.getActualEvent().id}`)
-    .subscribe(
-      (activities) => {this.activities = activities; console.log(this.activities)},
-      (err: HttpErrorResponse) => this.handleError(err)
-    );
+    this._http
+      .get<Array<Activity>>(
+        `${environment.server}readActivity/${this._in.getActualEvent().id}`
+      )
+      .subscribe(
+        activities => {
+          this.activities = activities;
+          console.log(this.activities);
+        },
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
   }
 
   getActivity(activity_id: number) {
-    this._http.get<Activity>(`${environment.server}getActivity/${activity_id}`)
-    .subscribe(
-      (a) => {this.reservedActivities.push(a);},
-      (err: HttpErrorResponse) => this.handleError(err)
-    );
+    this._http
+      .get<Activity>(`${environment.server}getActivity/${activity_id}`)
+      .subscribe(
+        a => {
+          this.reservedActivities.push(a);
+        },
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
   }
 
   deleteReservationActivity(reservation: any,i: number) {
@@ -43,11 +55,40 @@ export class ActivityService {
   }
 
   saveActivity(activity: Activity) {
-    this._http.post(`${environment.server}createActivity`, activity)
-    .subscribe(
-      () => this.ui.openSnackBar('Activity saved succesfully', 'Ok', 2000),
-      (err: HttpErrorResponse) => this.handleError(err)
-    )
+    this._http
+      .post(`${environment.server}createActivity`, activity)
+      .subscribe(
+        () => this.ui.openSnackBar("Activity saved succesfully", "Ok", 2000),
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
+  }
+
+  deleteActivity(index: number) {
+    this._http
+      .delete(
+        `${environment.server}deleteActivity/${this.activities[index].id}`
+      )
+      .subscribe(
+        () => {
+          this.ui.openSnackBar("Activity deleted succesfully", "Ok", 2000);
+          this.activities.splice(index, 1);
+        },
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
+  }
+
+  updateActivity(updatedActivity: Activity) {
+    this._http
+      .put(`${environment.server}updateActivity`, updatedActivity)
+      .subscribe(
+        () => {
+          this.ui.openSnackBar("Activity updated successfully", "Ok", 2000);
+          this.activities[
+            this.activities.findIndex(a => a.id === updatedActivity.id)
+          ] = updatedActivity;
+        },
+        (err: HttpErrorResponse) => this.handleError(err)
+      );
   }
 
   handleError(err: HttpErrorResponse) {

@@ -166,7 +166,7 @@ function deleteActivity(req, res) {
       console.log(err.message);
       res.status(400).json(err.message);
     } else {
-      const query = `delete from activity where id = ` + req.body.id;
+      const query = `delete from activity where id = ` + req.params.id;
 
       client
         .query(query)
