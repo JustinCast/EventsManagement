@@ -27,7 +27,8 @@ function createInstructor(req, res) {
                 query = `insert into instructor(dni,name,lastname,gender,country,state,phone,passport,
                     mail,description) values ('`+req.body.dni+`','`+req.body.name+`','`+req.body.lastname+`','`+req.body.gender+`'
                     ,'`+req.body.country+`','`+req.body.state+`','`+req.body.phone+`','`+req.body.passport+`','`+req.body.mail+`'
-                    ,'`+req.body.description+`')`;
+                    ,'`+req.body.description+`');`
+                    ;
             }else{
                 query = `insert into instructor(dni,name,lastname,gender,country,state,phone,
                     mail,description) values ('`+req.body.dni+`','`+req.body.name+`','`+req.body.lastname+`','`+req.body.gender+`'
