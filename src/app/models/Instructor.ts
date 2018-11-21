@@ -9,7 +9,8 @@ export class Instructor {
     public passport?: string,
     public mail?: string,
     public description?: string,
+    public dni?: number,
+    public id_activity?: number,
     public id?: number,
-    public dni?: number
   ) {}
 }

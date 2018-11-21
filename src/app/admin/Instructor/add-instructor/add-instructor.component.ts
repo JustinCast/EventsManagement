@@ -52,10 +52,10 @@ value(val: any) {
 }
 
   onSubmit() {
+    console.log(this.instructorGroup.get("id_activity").value);
     let instructor: Instructor = new Instructor(
       this.instructorGroup.get("name").value,
       this.instructorGroup.get("lastname").value,
-      this.instructorGroup.get("dni").value,
       this.instructorGroup.get("gender").value,
       this.instructorGroup.get("country").value,
       this.instructorGroup.get("state").value,
@@ -63,10 +63,10 @@ value(val: any) {
       this.instructorGroup.get("passport").value,
       this.instructorGroup.get("mail").value,
       this.instructorGroup.get("description").value,
+      this.instructorGroup.get("dni").value,
       this.instructorGroup.get("id_activity").value
     );
-    console.log(this.instructorGroup.get('id_activity').value);
-    /*this._instructor.saveInstructor(instructor)
+    this._instructor.saveInstructor(instructor)
     .subscribe(
       (id) => {
         this._instructor.ui.openSnackBar("Instructor guardado con éxito", "Ok", 2000); 
@@ -77,7 +77,7 @@ value(val: any) {
         });
       },
       (err: HttpErrorResponse) => this._instructor.handleError(err)
-    );*/
+    );
   }
   allcountries: Array<string> = [
     "Afghanistan",
