@@ -23,4 +23,8 @@ export class ShowActivitiesComponent implements OnInit {
     );
   }
 
+  deleteActivity(index: number) {
+    this._activity.deleteActivity(index);
+  }
+
 }

@@ -1,5 +1,5 @@
 <div class="container" *ngIf="load; else selectEvent">
-  <div *ngIf="act.activities !== undefined; else: progressbar">
+  <div *ngIf="act.activities.length > 0 && _instructor.instructors.length > 0; else: progressbar">
     <div class="row" *ngIf="act.activities.length !== 0; else addSome">
       <div class="col-sm" *ngFor="let act of act.activities; let i = index">
         <mat-card class="example-card shadow">
@@ -39,6 +39,19 @@
               <span class="color-twitter">{{ act.requirements }}</span>
             </h6>
           </mat-card-content>
+
+          <mat-accordion>
+            <mat-expansion-panel [expanded]="step === i" (opened)="setStep(i)">
+              <mat-expansion-panel-header>
+                <mat-panel-title class="text-info">
+                  Instructor
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="text-left">
+                <p><strong>Name: </strong> <span class="text-info">{{actualInstructor.name}}</span></p>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
 
           <div class="container text-center">
             <mat-card-actions>

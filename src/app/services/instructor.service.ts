@@ -23,7 +23,7 @@ export class InstructorService {
     this._http
       .get<Array<Instructor>>(`${environment.server}getInstructors`)
       .subscribe(
-        instructors => {(this.instructors = instructors); this.loading = false;},
+        instructors => {(this.instructors = instructors); this.loading = false; console.log(this.instructors)},
         (err: HttpErrorResponse) => this.handleError(err)
       );
   }
