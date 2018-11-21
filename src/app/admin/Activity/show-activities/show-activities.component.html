@@ -1,5 +1,5 @@
 <ul id="activities" *ngIf="_activity.activities.length > 0" class="container text-center">
-  <li *ngFor="let a of _activity.activities; let i = index">
+  <li class="activity" *ngFor="let a of _activity.activities; let i = index">
     <mat-card>
       <mat-card-title class="text-primary">{{a.name}}</mat-card-title>
       <hr>
