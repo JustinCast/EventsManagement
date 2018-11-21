@@ -16,7 +16,7 @@ export class ShowEventsComponent implements OnInit {
   ngOnInit() {}
 
   editEvent(index: number) {
-    
+    this._dialog.openEditEvent(this._events.events[index]);
   }
 
   deleteActivity(index: number) {}

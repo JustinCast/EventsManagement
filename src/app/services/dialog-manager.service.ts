@@ -18,7 +18,7 @@ export class DialogManagerService {
 
   openEditEvent(event: Organization): void {
     this.dialog.open(EditEventDialogComponent, {
-      width: '250px',
+      width: '50%',
       data: event,
       panelClass: 'dialog'
     });
